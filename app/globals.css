@@ -1,9 +1,15 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-display: 'Clash Display', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
+  --font-hand: 'Caveat', cursive;
 }
 
 @theme inline {
@@ -24,4 +30,71 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(120deg, #0071e3, #5e5ce6, #bf5af2, #ff375f, #ff9f0a);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes meshShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pastel-mesh {
+  background: linear-gradient(120deg, #DCEAF7, #E6E1F7, #FDE8E8, #DFF3EA);
+  background-size: 300% 300%;
+  animation: meshShift 25s ease infinite;
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.gear-spin {
+  animation: slowSpin 40s linear infinite;
+}
+
+.gear-spin-reverse {
+  animation: slowSpin 55s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pastel-mesh, .gear-spin, .gear-spin-reverse {
+    animation: none;
+  }
+}
+.dark-bg {
+  background: radial-gradient(circle at 25% 20%, #1B2436, #0B1220 65%);
+}
+
+@keyframes floatPart {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-part {
+  animation: floatPart 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-part {
+    animation: none;
+  }
 }
