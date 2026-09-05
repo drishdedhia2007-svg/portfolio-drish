@@ -4,9 +4,9 @@ import ProjectsGrid from "@/components/ProjectsGrid";
 
 export default function Projects() {
   const allProjects = getAllProjects();
-  const projects = allProjects.filter(
-    (p: any) => !p.category?.includes("Childhood")
-  );
+  const projects = allProjects.filter(function (p: any) {
+    return !p.category || !p.category.includes("Childhood");
+  });
 
   return (
     <div className="min-h-screen bg-white px-6 py-20">
@@ -21,7 +21,7 @@ export default function Projects() {
           className="text-center text-[#6E7280] mb-12"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          A record of what I've built, designed, and learned along the way.
+          A record of what I have built, designed, and learned along the way.
         </p>
 
         <ProjectsGrid projects={projects} />
@@ -32,7 +32,7 @@ export default function Projects() {
             className="text-sm text-[#8B93A1] hover:text-[#D98E4A] transition-colors"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Curious where this all started? → The Beginning
+            Curious where this all started? The Beginning
           </Link>
         </div>
       </div>
