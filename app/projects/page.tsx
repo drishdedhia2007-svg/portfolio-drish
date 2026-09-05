@@ -1,35 +1,40 @@
 import Link from "next/link";
 import { getAllProjects } from "@/lib/projects";
+import ProjectsGrid from "@/components/ProjectsGrid";
 
 export default function Projects() {
-  const projects = getAllProjects();
+  const allProjects = getAllProjects();
+  const projects = allProjects.filter(
+    (p: any) => !p.category?.includes("Childhood")
+  );
 
   return (
-    <div className="min-h-screen bg-white px-6 py-16">
-      <h1 className="text-3xl font-bold text-black text-center mb-10">
-        Projects
-      </h1>
+    <div className="min-h-screen bg-white px-6 py-20">
+      <div className="max-w-5xl mx-auto">
+        <h1
+          className="text-4xl font-semibold text-[#1D2433] text-center mb-2"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          Projects
+        </h1>
+        <p
+          className="text-center text-[#6E7280] mb-12"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          A record of what I've built, designed, and learned along the way.
+        </p>
 
-      <div className="max-w-2xl mx-auto flex flex-col gap-4">
-        {projects.map((project: any) => (
+        <ProjectsGrid projects={projects} />
+
+        <div className="text-center mt-20">
           <Link
-            key={project.slug}
-            href={`/projects/${project.slug}`}
-            className="block rounded-lg border border-zinc-200 p-5 hover:border-zinc-400 transition-colors"
+            href="/about"
+            className="text-sm text-[#8B93A1] hover:text-[#D98E4A] transition-colors"
+            style={{ fontFamily: "var(--font-body)" }}
           >
-            <div className="flex items-center justify-between mb-1">
-              <h2 className="text-lg font-semibold text-black">
-                {project.title}
-              </h2>
-              <span className="text-xs uppercase tracking-wide text-zinc-500">
-                {project.status}
-              </span>
-            </div>
-            <p className="text-sm text-zinc-600">
-              {project.shortDescription}
-            </p>
+            Curious where this all started? → The Beginning
           </Link>
-        ))}
+        </div>
       </div>
     </div>
   );
