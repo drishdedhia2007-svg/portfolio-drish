@@ -70,3 +70,9 @@ export function getSkillCounts(): { skill: string; count: number }[] {
     .map(([skill, count]) => ({ skill, count }))
     .sort((a, b) => b.count - a.count);
 }
+
+export function getChildhoodProjects(): ProjectMeta[] {
+  return getAllProjects().filter(
+    (p) => p.category && p.category.includes("Childhood")
+  );
+}
