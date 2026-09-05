@@ -2,7 +2,7 @@
 title: "Harley-Davidson Model"
 slug: "harley-davidson-model"
 status: "completed"
-category: ["Personal Builds"]
+category: ["Childhood"]
 skills: ["Design Thinking"]
 startDate: "2014-06-01"
 endDate: "2014-08-01"
