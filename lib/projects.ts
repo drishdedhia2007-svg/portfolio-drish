@@ -52,3 +52,21 @@ export async function getProjectData(slug: string): Promise<ProjectMeta & { cont
     ...data,
   } as ProjectMeta & { contentHtml: string };
 }
+
+export function getSkillCounts(): { skill: string; count: number }[] {
+  const projects = getAllProjects().filter(
+    (p) => !p.category || !p.category.includes("Childhood")
+  );
+
+  const counts: Record<string, number> = {};
+
+  projects.forEach((project) => {
+    (project.skills || []).forEach((skill) => {
+      counts[skill] = (counts[skill] || 0) + 1;
+    });
+  });
+
+  return Object.entries(counts)
+    .map(([skill, count]) => ({ skill, count }))
+    .sort((a, b) => b.count - a.count);
+}
