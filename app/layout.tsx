@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Drish Dedhia",
   },
   description:
-    "Documenting my engineering journey from childhood builds to CAD design and manufacturing.",
+    "Drish Dedhia's mechanical engineering portfolio: experience, CAD projects, research papers, competitions, and current work at RWTH Aachen.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

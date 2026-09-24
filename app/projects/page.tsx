@@ -10,8 +10,8 @@ export default function Projects() {
 
   return (
     <>
-      <header className="paper-grid border-b border-[#d9ded8] bg-[#e9ece7] py-20 sm:py-26">
-        <div className="page-wrap"><p className="eyebrow">Archive / 01</p><h1 className="display mt-4 text-5xl font-extrabold sm:text-7xl">The project log.</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-[#42545c]">A growing archive of engineering work. Open a project to see the problem, process, result, and what I would carry into the next build.</p></div>
+      <header className="paper-grid border-b border-[#b9c3bd] bg-[#dce1dc] py-20 sm:py-26">
+        <div className="page-wrap"><p className="eyebrow">3D design portfolio / 02</p><h1 className="display mt-4 text-5xl font-extrabold sm:text-7xl">The project log.</h1><p className="mt-6 max-w-2xl text-lg leading-8 text-[#41535b]">A growing collection of personal CAD and 3D print studies. Open a project to see the problem, process, result, mistakes, and what I would carry into the next build.</p></div>
       </header>
       <section className="page-wrap py-14 sm:py-20" aria-label="Engineering projects">
         <ProjectsGrid projects={projects} />
