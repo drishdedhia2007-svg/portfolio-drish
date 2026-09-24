@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Drish Dedhia's engineering portfolio
 
-## Getting Started
+A living engineering journal built with Next.js, TypeScript, Tailwind CSS, and Markdown. Projects are case studies: each entry explains the motivation, approach, challenge, result, and lessons learned.
 
-First, run the development server:
+## Run the website on your computer
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Open `C:\Users\drish\Desktop\Projects\portfolio-drish` in VS Code.
+2. Choose **Terminal > New Terminal**.
+3. Run `npm install` if this is a fresh copy of the project.
+4. Run `npm run dev`.
+5. Open `http://localhost:3000` in your browser.
+
+Use `Ctrl+C` in the terminal to stop the website.
+
+## Add a project
+
+1. Create a new `.md` file in `content/projects/`. The file name becomes the page address. For example, `wind-tunnel-model.md` becomes `/projects/wind-tunnel-model`.
+2. Paste this starting structure and replace the example text with your own facts:
+
+```md
+---
+title: "Project title"
+status: "completed"
+category: ["CAD"]
+skills: ["Fusion 360"]
+shortDescription: "One sentence describing the problem and result."
+coverImage: "/images/projects/project-folder/cover.png"
+---
+
+## Why I Built This
+
+What was the problem or motivation?
+
+## My Approach
+
+What did you try, and why?
+
+## Challenges
+
+What was difficult?
+
+## Solution
+
+How did you work through it?
+
+## Result
+
+What did you make or learn? Be precise about whether it was designed, built, or tested.
+
+## What I Learned
+
+What would you carry into the next project?
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Put any images in a matching folder under `public/images/projects/`. If you have no cover image, remove the `coverImage` line. Image names and capitalization must match exactly.
+4. Save the file. It will appear automatically on Projects, and its skills will appear on Skills. To show a childhood project under About instead, add `"Childhood"` to its `category` list.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Only `.md` files inside `content/projects/` are read as projects. Files directly inside `content/` are ignored.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Check before publishing
 
-## Learn More
+Run `npm run build` in the project terminal. A successful build lists every generated page, including each project address. Then commit and push to `main` to trigger the Vercel deployment.
 
-To learn more about Next.js, take a look at the following resources:
+## Site map
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` - animated introduction and selected projects
+- `/projects` - filterable project archive
+- `/projects/[slug]` - full case study
+- `/skills` - skills linked to project evidence
+- `/about` - background, writing, and childhood projects
+- `/recruiter` - concise view for recruiters

@@ -1,127 +1,35 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import HomeHero from "@/components/HomeHero";
+import ProjectCard from "@/components/ProjectCard";
+import { getAllProjects, getSkillCounts } from "@/lib/projects";
 
 export default function Home() {
-  const [assembled, setAssembled] = useState(false);
-  const router = useRouter();
-
-  function handleViewProjects() {
-    setAssembled(true);
-    setTimeout(() => {
-      router.push("/projects");
-    }, 1300);
-  }
-
-  const partTransition = "transform 1.4s cubic-bezier(0.22,1,0.36,1)";
+  const projects = getAllProjects().filter((project) => !project.category?.includes("Childhood"));
+  const skills = getSkillCounts();
 
   return (
-    <div className="dark-bg relative min-h-screen overflow-hidden">
-      {/* exploded car, assembles on click */}
-      <svg
-        viewBox="0 0 600 260"
-        className="absolute right-[-40px] bottom-0 h-[380px] w-[380px] sm:h-[460px] sm:w-[460px] opacity-50 pointer-events-none"
-      >
-        <g
-          style={{
-            transform: assembled ? "translate(0px, 0px)" : "translate(-14px, 6px) rotate(-1deg)",
-            transition: partTransition,
-          }}
-        >
-          <g className="float-part">
-            <rect x="80" y="120" width="440" height="58" rx="18" fill="#1E293D" stroke="#9AA3B2" strokeWidth="1.5" />
-            <rect x="60" y="150" width="30" height="14" rx="4" fill="#D98E4A" />
-            <rect x="510" y="150" width="30" height="14" rx="4" fill="#D98E4A" />
-          </g>
-        </g>
+    <>
+      <HomeHero />
+      <section className="page-wrap grid gap-0 border-x border-[#d9ded8] sm:grid-cols-3" aria-label="Portfolio at a glance">
+        <div className="border-b border-[#d9ded8] px-6 py-8 sm:border-b-0 sm:border-r"><span className="technical text-[10px] text-[#a74727]">01 / CASE STUDIES</span><p className="display mt-2 text-3xl font-extrabold">{projects.length.toString().padStart(2, "0")}</p><p className="mt-1 text-sm text-[#59676b]">Detailed engineering stories</p></div>
+        <div className="border-b border-[#d9ded8] px-6 py-8 sm:border-b-0 sm:border-r"><span className="technical text-[10px] text-[#a74727]">02 / SKILLS IN USE</span><p className="display mt-2 text-3xl font-extrabold">{skills.length.toString().padStart(2, "0")}</p><p className="mt-1 text-sm text-[#59676b]">Linked to real work</p></div>
+        <div className="px-6 py-8"><span className="technical text-[10px] text-[#a74727]">03 / CURRENT CHAPTER</span><p className="display mt-2 text-xl font-extrabold">RWTH Aachen</p><p className="mt-1 text-sm text-[#59676b]">B.Sc. Mechanical Engineering</p></div>
+      </section>
 
-        <g
-          style={{
-            transform: assembled ? "translate(0px, 0px)" : "translate(10px, -60px) rotate(4deg)",
-            transition: partTransition,
-          }}
-        >
-          <g className="float-part" style={{ animationDelay: "0.3s" }}>
-            <path
-              d="M185,120 L225,60 Q300,38 380,60 L418,120 Z"
-              fill="#243247"
-              stroke="#9AA3B2"
-              strokeWidth="1.5"
-            />
-          </g>
-        </g>
+      <section className="page-wrap py-20 sm:py-28">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-5">
+          <div><p className="eyebrow">Selected work</p><h2 className="display mt-3 text-4xl font-extrabold sm:text-5xl">From question to prototype.</h2><p className="mt-4 max-w-2xl text-[#59676b]">Each project records the thinking behind the result: the problem, the decisions, the setbacks, and what changed along the way.</p></div>
+          <Link href="/projects" className="button-secondary">All projects <span aria-hidden="true">&rarr;</span></Link>
+        </div>
+        {projects.length > 0 ? <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{projects.slice(0, 3).map((project, index) => <ProjectCard key={project.slug} project={project} index={index + 1} />)}</div> : <p className="border border-[#d9ded8] bg-[#fffefa] p-8 text-[#59676b]">The first case study is on its way.</p>}
+      </section>
 
-        <g
-          style={{
-            transform: assembled ? "translate(0px, 0px)" : "translate(-70px, 46px) rotate(-25deg)",
-            transition: partTransition,
-          }}
-        >
-          <g className="float-part" style={{ animationDelay: "0.6s" }}>
-            <circle cx="185" cy="182" r="38" fill="#141B29" stroke="#D98E4A" strokeWidth="2" />
-            <circle cx="185" cy="182" r="15" fill="#0B1220" />
-          </g>
-        </g>
-
-        <g
-          style={{
-            transform: assembled ? "translate(0px, 0px)" : "translate(80px, 55px) rotate(30deg)",
-            transition: partTransition,
-          }}
-        >
-          <g className="float-part" style={{ animationDelay: "0.9s" }}>
-            <circle cx="440" cy="182" r="38" fill="#141B29" stroke="#D98E4A" strokeWidth="2" />
-            <circle cx="440" cy="182" r="15" fill="#0B1220" />
-          </g>
-        </g>
-      </svg>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 min-h-screen flex flex-col justify-center py-24">
-        <span
-          className="mb-6 w-fit rounded-full bg-white/10 border border-white/10 px-4 py-1.5 text-sm font-medium text-[#D98E4A]"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Maschinenbau at RWTH Aachen
-        </span>
-
-        <h1
-          className="font-semibold tracking-tight text-5xl sm:text-6xl md:text-7xl leading-[0.95] text-[#F5F3EE]"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Drish
-          <br />
-          Dedhia
-        </h1>
-
-        <p
-          className="mt-5 text-lg sm:text-xl text-[#8B93A1] max-w-md"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          Documenting my engineering journey, from
-          childhood builds to CAD design and manufacturing.
-        </p>
-
-        <button
-          onClick={handleViewProjects}
-          className="mt-10 w-fit inline-flex items-center gap-2 rounded-full bg-[#D98E4A] text-[#10151F] px-7 py-3.5 text-sm font-semibold hover:bg-[#E6A566] transition-colors shadow-lg shadow-black/20"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          View Portfolio
-        </button>
-      </div>
-
-      <div
-        className="hidden sm:block absolute bottom-10 left-10 z-10 bg-[#F5F3EE] rounded-lg px-5 py-3 shadow-lg"
-        style={{ transform: "rotate(-3deg)" }}
-      >
-        <p
-          className="text-xl text-[#10151F]"
-          style={{ fontFamily: "var(--font-hand)" }}
-        >
-          You Only Live Once; might as well build something.
-        </p>
-      </div>
-    </div>
+      <section className="bg-[#e9ece7] py-20 sm:py-24">
+        <div className="page-wrap grid items-center gap-10 lg:grid-cols-[.9fr_1.1fr]">
+          <div><p className="eyebrow">The approach</p><h2 className="display mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">Make. Measure.<br />Understand. Repeat.</h2></div>
+          <div className="border-l-2 border-[#c45e37] pl-6 sm:pl-8"><p className="text-lg leading-8 text-[#42545c]">I use this space as a workshop notebook in public. Finished projects matter, but so do the choices and wrong turns that made them possible.</p><Link href="/about" className="mt-6 inline-flex items-center gap-2 text-sm font-extrabold text-[#a74727] hover:underline">More about me <span aria-hidden="true">&rarr;</span></Link></div>
+        </div>
+      </section>
+    </>
   );
 }

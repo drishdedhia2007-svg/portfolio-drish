@@ -1,100 +1,91 @@
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --font-display: 'Clash Display', sans-serif;
-  --font-body: 'Satoshi', sans-serif;
-  --font-hand: 'Caveat', cursive;
+  --ink: #192a34;
+  --ink-soft: #42545c;
+  --paper: #f7f5ef;
+  --surface: #fffefa;
+  --line: #d9ded8;
+  --accent: #c45e37;
+  --accent-dark: #a74727;
+  --font-display: "Manrope", Arial, sans-serif;
+  --font-body: "Satoshi", Arial, sans-serif;
+  --font-hand: "Caveat", cursive;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-body);
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
 }
+button, input { font: inherit; }
+::selection { background: #edc5a8; color: var(--ink); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.page-wrap { width: min(100% - 2.5rem, 1180px); margin-inline: auto; }
+.eyebrow {
+  color: var(--accent-dark);
+  font-family: var(--font-sans);
+  font-size: .73rem;
+  font-weight: 800;
+  letter-spacing: .19em;
+  text-transform: uppercase;
 }
-
-.animated-gradient {
-  background: linear-gradient(120deg, #0071e3, #5e5ce6, #bf5af2, #ff375f, #ff9f0a);
-  background-size: 300% 300%;
-  animation: gradientShift 15s ease infinite;
+.display { font-family: var(--font-display); letter-spacing: -.055em; }
+.technical { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .12em; }
+.blueprint-grid {
+  background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
-
-@keyframes meshShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.paper-grid {
+  background-image: linear-gradient(rgba(25,42,52,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(25,42,52,.045) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
-
-.pastel-mesh {
-  background: linear-gradient(120deg, #DCEAF7, #E6E1F7, #FDE8E8, #DFF3EA);
-  background-size: 300% 300%;
-  animation: meshShift 25s ease infinite;
+.button-primary, .button-secondary, .button-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  min-height: 48px;
+  border-radius: 4px;
+  padding: .75rem 1.25rem;
+  font-size: .86rem;
+  font-weight: 800;
+  transition: background .2s, color .2s, transform .2s, border-color .2s;
 }
+.button-primary { background: var(--accent); color: #fff; }
+.button-primary:hover { background: var(--accent-dark); transform: translateY(-2px); }
+.button-secondary { border: 1px solid var(--ink); color: var(--ink); }
+.button-secondary:hover { background: var(--ink); color: #fff; }
+.button-light { border: 1px solid rgba(255,255,255,.42); color: #fff; }
+.button-light:hover { background: #fff; color: var(--ink); }
+.section-rule { border-top: 1px solid var(--line); }
 
-@keyframes slowSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+.project-prose { font-family: var(--font-body); color: var(--ink-soft); font-size: 1.08rem; line-height: 1.9; }
+.project-prose h2 { color: var(--ink); font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -.04em; line-height: 1.2; margin: 3.5rem 0 1rem; }
+.project-prose h2::before { content: "/ "; color: var(--accent); }
+.project-prose p { margin: 0 0 1.5rem; }
+.project-prose img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; background: #e5e6e2; margin: 2rem 0; }
+.project-prose a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+.project-prose strong { color: var(--ink); }
 
-.gear-spin {
-  animation: slowSpin 40s linear infinite;
-}
-
-.gear-spin-reverse {
-  animation: slowSpin 55s linear infinite reverse;
-}
-
+@keyframes floatPart { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.float-part { animation: floatPart 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .pastel-mesh, .gear-spin, .gear-spin-reverse {
-    animation: none;
-  }
-}
-.dark-bg {
-  background: radial-gradient(circle at 25% 20%, #1B2436, #0B1220 65%);
-}
-
-@keyframes floatPart {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-
-.float-part {
-  animation: floatPart 4s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .float-part {
-    animation: none;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

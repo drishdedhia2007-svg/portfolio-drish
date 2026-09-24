@@ -4,8 +4,6 @@ slug: "harley-davidson-model"
 status: "completed"
 category: ["Childhood"]
 skills: ["Design Thinking"]
-startDate: "2014-06-01"
-endDate: "2014-08-01"
 shortDescription: "An early handbuilt model that sparked my interest in mechanical design."
 ---
 

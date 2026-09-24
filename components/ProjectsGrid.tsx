@@ -1,100 +1,30 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import ProjectCard from "@/components/ProjectCard";
+import type { ProjectMeta } from "@/lib/projects";
 
-type Project = {
-  slug: string;
-  title: string;
-  status: string;
-  shortDescription?: string;
-  coverImage?: string;
-  [key: string]: any;
-};
-
-export default function ProjectsGrid({ projects }: { projects: Project[] }) {
+export default function ProjectsGrid({ projects }: { projects: ProjectMeta[] }) {
   const [statusFilter, setStatusFilter] = useState("all");
-
-  const statuses = ["all", ...Array.from(new Set(projects.map((p) => p.status)))];
-
-  const filtered =
-    statusFilter === "all"
-      ? projects
-      : projects.filter((p) => p.status === statusFilter);
+  const statuses = ["all", ...Array.from(new Set(projects.map((project) => project.status)))];
+  const filtered = statusFilter === "all" ? projects : projects.filter((project) => project.status === statusFilter);
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2 justify-center mb-10">
-        {statuses.map((status) => (
-          <button
-            key={status}
-            onClick={() => setStatusFilter(status)}
-            className={
-              statusFilter === status
-                ? "px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors bg-[#1D2433] text-white"
-                : "px-4 py-1.5 rounded-full text-sm font-medium capitalize transition-colors bg-[#F0F1F3] text-[#4A4F58] hover:bg-[#E2E4E8]"
-            }
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            {status === "all" ? "All" : status.replace("-", " ")}
-          </button>
-        ))}
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-y border-[#d9ded8] py-4">
+        <div className="flex flex-wrap gap-2" aria-label="Filter projects by status">
+          {statuses.map((status) => (
+            <button key={status} type="button" onClick={() => setStatusFilter(status)} aria-pressed={statusFilter === status} className={`rounded-sm px-4 py-2 text-xs font-extrabold capitalize transition-colors ${statusFilter === status ? "bg-[#192a34] text-white" : "bg-[#e9ece7] text-[#42545c] hover:bg-[#d6dfd8]"}`}>
+              {status === "all" ? "All work" : status.replaceAll("-", " ")}
+            </button>
+          ))}
+        </div>
+        <span className="technical text-[10px] uppercase text-[#68757a]">Showing {filtered.length} of {projects.length}</span>
       </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((project) => (
-          <Link
-            key={project.slug}
-            href={"/projects/" + project.slug}
-            className="group block rounded-2xl border border-[#EAEAEC] overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all bg-white"
-          >
-            {project.coverImage ? (
-              <img
-                src={project.coverImage}
-                alt={project.title}
-                className="w-full h-44 object-cover"
-              />
-            ) : (
-              <div
-                className="w-full h-44 bg-[#F0F1F3] flex items-center justify-center text-[#B4B8C0] text-sm"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                No image yet
-              </div>
-            )}
-            <div className="p-5">
-              <div className="flex items-center justify-between mb-2">
-                <h2
-                  className="text-lg font-semibold text-[#1D2433]"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {project.title}
-                </h2>
-                <span
-                  className="text-xs uppercase tracking-wide text-[#D98E4A] shrink-0 ml-2"
-                  style={{ fontFamily: "var(--font-body)" }}
-                >
-                  {project.status}
-                </span>
-              </div>
-              <p
-                className="text-sm text-[#6E7280] leading-relaxed"
-                style={{ fontFamily: "var(--font-body)" }}
-              >
-                {project.shortDescription}
-              </p>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
-        <p
-          className="text-center text-[#8B93A1] mt-10"
-          style={{ fontFamily: "var(--font-body)" }}
-        >
-          No projects match this filter yet.
-        </p>
+      {filtered.length > 0 ? (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{filtered.map((project) => <ProjectCard key={project.slug} project={project} index={projects.findIndex((item) => item.slug === project.slug) + 1} />)}</div>
+      ) : (
+        <div className="border border-[#d9ded8] bg-[#fffefa] p-10 text-center text-[#59676b]">No projects match this filter yet.</div>
       )}
     </div>
   );

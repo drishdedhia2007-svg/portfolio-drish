@@ -16,12 +16,12 @@ export type ProjectMeta = {
   skills?: string[];
   startDate?: string;
   endDate?: string;
-  [key: string]: any;
 };
 
-export function getAllProjectSlugs() {
-  const fileNames = fs.readdirSync(projectsDirectory);
-  return fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
+export function getAllProjectSlugs(): string[] {
+  return fs.readdirSync(projectsDirectory)
+    .filter((fileName) => fileName.endsWith(".md"))
+    .map((fileName) => fileName.slice(0, -3));
 }
 
 export function getAllProjects(): ProjectMeta[] {
@@ -30,12 +30,15 @@ export function getAllProjects(): ProjectMeta[] {
     const fullPath = path.join(projectsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data } = matter(fileContents);
+    if (!data.title || !data.status) {
+      throw new Error(`Project ${slug}.md needs title and status in its frontmatter.`);
+    }
     return {
       slug,
       ...data,
     } as ProjectMeta;
   });
-  return projects;
+  return projects.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 export async function getProjectData(slug: string): Promise<ProjectMeta & { contentHtml: string }> {
