@@ -12,6 +12,8 @@ export type ProjectMeta = {
   status: string;
   shortDescription?: string;
   coverImage?: string;
+  coverAlt?: string;
+  coverCaption?: string;
   category?: string[];
   skills?: string[];
   startDate?: string;

@@ -1,11 +1,13 @@
 ---
 title: "Door Stopper"
 slug: "door-stopper"
-status: "completed"
-category: ["CAD", "3D Printing"]
+status: "ready-to-print"
+category: ["CAD", "Print Preparation"]
 skills: ["Fusion 360", "CAD", "Mechanical Design"]
 shortDescription: "A ridged doorstopper designed in Fusion 360 to hold a door against wind."
 coverImage: "/images/projects/door-stopper/render3.png"
+coverAlt: "Gray wedge doorstopper with parallel ridges along the top"
+coverCaption: "Original project render"
 ---
 
 ## Why I Built This
@@ -24,25 +26,27 @@ I actually intended to use, not just a practice model, I made sure to
 work with real, practical dimensions and placement rather than
 arbitrary numbers.
 
-## Challenges
+## Where I Got Stuck
 
-Adding the ridges meant repeating the same extrude feature many times
-across the surface, which quickly became tedious to do manually, one
-copy-paste at a time.
+My first instinct was to copy and paste an extrude for every ridge.
+It worked in principle, but it was slow, repetitive, and an obvious
+sign that I was using the software the hard way.
 
-## Solution
+## What Changed
 
 I looked into whether Fusion 360 had a better way to repeat a feature,
-and found its pattern tool, which lets you repeat a feature across a
-face automatically. I used that to generate all the ridges in one
-step instead of manually extruding each one, then added fillets where
-needed to clean up the design.
+and found its pattern tool. I used it to repeat the ridge feature
+instead of manually extruding each one, then added fillets where they
+made sense for the shape and finish.
 
 ## Result
 
-A finished, ready-to-print doorstopper with a ridged surface for grip,
-built with real-world dimensions in mind. The whole process, including
-learning the new software along the way, took about 45 minutes.
+A ready-to-print CAD model with ridges intended to add grip, built with
+real-world dimensions in mind. The whole session, including learning
+the new software along the way, took about 45 minutes. I have not
+printed it yet, so I still need to check whether the ridges, material,
+and chosen size actually hold my door under the same wind that started
+the project.
 
 ![Full CAD view of the doorstopper](/images/projects/door-stopper/RWTH%20v2.png)
 
@@ -50,8 +54,8 @@ learning the new software along the way, took about 45 minutes.
 
 ## What I Learned
 
-Beyond the specific pattern-tool trick, this was a good lesson in
-looking for the right tool instead of brute-forcing a repetitive task
-manually. Working in Fusion 360 also gave me a useful point of
-comparison against Siemens NX, which is helping me understand which
-parts of CAD workflows are tool-specific versus universal.
+The pattern tool was the immediate fix, but the bigger lesson was to
+notice when a tedious step meant I should rethink my method. Fusion 360
+also gave me a useful comparison with Siemens NX: the tools can express
+similar ideas, but the workflow and interface still affect how I solve
+a problem. The next lesson will come from testing the physical part.
