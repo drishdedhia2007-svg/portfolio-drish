@@ -7,7 +7,7 @@ export default function ProjectCard({ project, index }: { project: ProjectMeta; 
     <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col overflow-hidden border border-[#d9ded8] bg-[#fffefa] transition-all duration-300 hover:-translate-y-1 hover:border-[#a7b4b1] hover:shadow-[0_18px_40px_rgba(25,42,52,.1)]">
       <div className="paper-grid relative aspect-[16/10] overflow-hidden border-b border-[#d9ded8] bg-[#e5e9e6]">
         {project.coverImage ? (
-          <Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-contain transition-transform duration-500 group-hover:scale-[1.04]" />
+          <Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill loading={index === 1 ? "eager" : "lazy"} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-contain transition-transform duration-500 group-hover:scale-[1.04]" />
         ) : (
           <div className="flex h-full items-center justify-center text-sm text-[#728287]">Project image coming soon</div>
         )}

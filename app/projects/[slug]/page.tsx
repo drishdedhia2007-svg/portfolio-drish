@@ -34,7 +34,7 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
         </div>
       </header>
 
-      {project.coverImage && <div className="page-wrap py-8 sm:py-12"><div className="paper-grid relative aspect-[16/8] overflow-hidden border border-[#d9ded8] bg-[#dde3df]"><Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill priority sizes="(max-width: 1180px) 100vw, 1180px" className="object-contain" /></div><p className="technical mt-3 text-[10px] uppercase text-[#68757a]">{project.coverCaption || `Project render / ${project.title}`}</p></div>}
+      {project.coverImage && <div className="page-wrap py-8 sm:py-12"><div className="paper-grid relative aspect-[16/8] overflow-hidden border border-[#d9ded8] bg-[#dde3df]"><Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill loading="eager" sizes="(max-width: 1180px) 100vw, 1180px" className="object-contain" /></div><p className="technical mt-3 text-[10px] uppercase text-[#68757a]">{project.coverCaption || `Project render / ${project.title}`}</p></div>}
 
       <div className="page-wrap grid gap-12 py-12 lg:grid-cols-[220px_minmax(0,720px)] lg:gap-20 lg:py-18">
         <aside className="lg:sticky lg:top-28 lg:self-start"><p className="eyebrow">Project notes</p><p className="mt-4 text-sm leading-7 text-[#59676b]">The full story behind the work, from the first problem to the last lesson.</p><Link href="/skills" className="mt-6 inline-block text-xs font-extrabold text-[#a74727] hover:underline">See skills in context <span aria-hidden="true">&rarr;</span></Link></aside>
