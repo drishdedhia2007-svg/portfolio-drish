@@ -8,21 +8,21 @@ const paths = [
     href: "/experience",
     label: "The people and places",
     title: "Experience",
-    detail: "Start here for Ecogenium, my first aerospace design brief, the Goethe scholarship, and the volunteer work that taught me just as much about people as projects.",
+    detail: "Meet the teams and people who pushed me forward: from my first aerospace design brief to Ecogenium's workshop, a Goethe scholarship, and teaching with CRY.",
   },
   {
     number: "02",
     href: "/projects",
     label: "Ideas I could not leave alone",
     title: "Projects",
-    detail: "A door that would not stay open. A towel hook with a clever little mechanism. CAD has become my way of turning those passing thoughts into something I can test.",
+    detail: "A door that would not stay open. A towel hook with a clever little mechanism. I like chasing those everyday problems into CAD and seeing whether the idea still works when it has dimensions.",
   },
   {
     number: "03",
     href: "/research",
     label: "Questions that needed evidence",
     title: "Research papers",
-    detail: "The experiments and models behind my questions, including one projectile study that made me rethink my original hypothesis.",
+    detail: "Follow the experiments and models behind my questions, including a projectile study that refused to agree with my hypothesis and became more interesting because of it.",
   },
   {
     number: "04",
@@ -53,9 +53,9 @@ export default function Home() {
             </h2>
           </div>
           <div className="space-y-5 text-lg leading-8 text-[#c7d5d0]">
-            <p>One day I am working out why a door will not stay open in the wind. Another day I am trying to understand what a chassis material needs to survive. I love that engineering gives both questions a place.</p>
-            <p>At RWTH Aachen, I study mechanical engineering. With Ecogenium&apos;s chassis team, I am learning what happens when ideas meet materials, teammates, and real workshop constraints. On my own, I will open Fusion 360 or Siemens NX just to see if I can make the shape in my head. The first version is not always good. That is usually when it gets interesting.</p>
-            <p>This site is where I keep the process visible: the excitement, the wrong turns, what I changed, and what I want to try next.</p>
+            <p>One day I am figuring out why my door will not stay open in the wind. Another day I am asking what a chassis material really has to survive. I love that engineering makes room for both questions, and that neither one is solved by just making something look right.</p>
+            <p>I study mechanical engineering at RWTH Aachen. With Ecogenium&apos;s chassis team, I am beginning to see what happens when ideas meet materials, teammates, and workshop constraints. On my own, I open Fusion 360 or Siemens NX to see if I can give the shape in my head sensible dimensions. The first version is rarely the last; that is usually when I learn the most.</p>
+            <p>I made this site to show the whole process: the excitement, the wrong turns, what I changed, and the next question I want to chase. I hope you will find something here that makes you curious too.</p>
           </div>
         </div>
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-[#35515b] bg-[#35515b] sm:grid-cols-3">
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="p-8 sm:p-12">
             <p className="eyebrow">Right now / Ecogenium</p>
             <h2 className="display mt-4 text-3xl font-extrabold sm:text-4xl">Learning in the workshop, writing it down as I go.</h2>
-            <p className="mt-5 text-base leading-8 text-[#c7d5d0]">Being part of a student team building a hydrogen vehicle is exciting and humbling in equal measure. I write about being new to the chassis team: what I understood, what I missed, and what I am trying next. If you are learning something difficult too, I hope the notes feel like good company.</p>
+            <p className="mt-5 text-base leading-8 text-[#c7d5d0]">Joining a student team building a hydrogen vehicle has been exciting and humbling in equal measure. I write about being new to the chassis team while it is happening: the questions I ask, the details I miss, and the things that finally click. If you are learning something difficult too, I hope the notes feel like good company.</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/experience#ecogenium" className="button-primary">Meet the team through my experience <span aria-hidden="true">→</span></Link>
               <a href="https://drishdedhia23.substack.com/" target="_blank" rel="noopener noreferrer" className="button-light">Read the logbook <span aria-hidden="true">→</span></a>

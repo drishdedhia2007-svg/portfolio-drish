@@ -14,7 +14,7 @@ export default function HomeHero() {
             Then make it <span className="serif-accent text-[#f4b58d]">better.</span>
           </h1>
           <p className="mt-8 max-w-2xl text-lg leading-8 text-[#d0ded9]">
-            That curiosity started with toy cars and old appliances. These days it takes me into CAD, research, and the chassis workshop at Ecogenium. I&apos;m still learning, and that is exactly what makes the work exciting.
+            I started by pulling apart toy cars and old appliances to see what was going on inside. Now I get to bring that same curiosity to CAD, research, and Ecogenium&apos;s chassis workshop. There is a lot I do not know yet, which means there is a lot I cannot wait to figure out.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <Link href="/experience" className="button-primary">See what I&apos;m doing now <span aria-hidden="true">→</span></Link>
