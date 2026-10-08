@@ -1,5 +1,5 @@
 /* A continuous set of warm materials. Sections change temperature, not identity. */
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&family=Nunito+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap");
 
 :root, html[data-theme="dark"] {
   color-scheme: dark;
@@ -35,9 +35,9 @@
   --tone-8: #27262d;
   --glow-a: #a884a023;
   --glow-b: #d2a38a14;
-  --font-display: "Nunito Sans", Arial, sans-serif;
-  --font-body: "Nunito Sans", Arial, sans-serif;
-  --font-editorial: "Fraunces", Georgia, serif;
+  --font-display: "DM Sans", Arial, sans-serif;
+  --font-body: "DM Sans", Arial, sans-serif;
+  --font-editorial: "Instrument Serif", Georgia, serif;
   --font-technical: "IBM Plex Mono", monospace;
 }
 

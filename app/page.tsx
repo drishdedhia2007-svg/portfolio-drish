@@ -1,70 +1,86 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeHero from "@/components/HomeHero";
+import ProjectRail from "@/components/ProjectRail";
 import ProjectileEvidence from "@/components/ProjectileEvidence";
 import { getAllProjects } from "@/lib/projects";
 
-const routes = [
-  { number: "01", href: "/projects", title: "Projects", detail: "The models, the decisions, and the things I would change." },
-  { number: "02", href: "/experience", title: "Experience", detail: "Ecogenium, an early aerospace brief, teaching, and more." },
-  { number: "03", href: "/research", title: "Research", detail: "Questions that needed measurements, models, and a second look." },
-  { number: "04", href: "/writing", title: "Writing", detail: "My ongoing logbook from the chassis workshop." },
-  { number: "05", href: "/competitions", title: "Competitions", detail: "What deadlines and unfamiliar problems taught me." },
-  { number: "06", href: "/about", title: "About", detail: "The person behind the projects, from Mumbai to Aachen." },
+const featuredSlugs = [
+  "self-locking-towel-hook",
+  "star-test-pad",
+  "miniature-winners-podium",
+  "door-stopper",
+  "propeller",
 ];
 
 export default function Home() {
-  const projects = getAllProjects();
-  const [lead, ...more] = ["self-locking-towel-hook", "star-test-pad", "miniature-winners-podium"]
-    .map(slug => projects.find(project => project.slug === slug))
+  const allProjects = getAllProjects();
+  const featured = featuredSlugs
+    .map((slug) => allProjects.find((project) => project.slug === slug))
     .filter((project): project is NonNullable<typeof project> => Boolean(project));
 
-  return <>
-    <HomeHero />
+  return (
+    <div className="new-home">
+      <HomeHero />
 
-    <section id="approach" className="home-approach paper-section chapter">
-      <div className="page-wrap approach-layout">
-        <div className="chapter-index"><span>01 / FROM IDEA TO OBJECT</span><span className="index-line" aria-hidden="true" /></div>
-        <div className="approach-intro" data-reveal>
-          <p className="eyebrow">A useful question before a neat answer</p>
-          <h2 className="narrative-title">A neat idea is only the <em>beginning.</em></h2>
-          <p>I like the part where an idea meets dimensions, materials, a deadline, or a teammate who asks a better question. That is when I have to stop guessing and make something I can test.</p>
+      <section className="new-method" id="approach" aria-labelledby="method-title">
+        <div className="new-method-orbit" aria-hidden="true"><span /><span /><span /></div>
+        <div className="page-wrap new-method-inner">
+          <p className="new-index">01 / HOW I THINK</p>
+          <h2 id="method-title">Make it.<br /><em>Then make it better.</em></h2>
+          <div className="new-method-bottom">
+            <p>An idea gets interesting when dimensions, materials, and other people start asking questions back.</p>
+            <div className="new-method-steps" aria-label="My process"><span>Model</span><i aria-hidden="true">↗</i><span>Test</span><i aria-hidden="true">↗</i><span>Rethink</span></div>
+          </div>
         </div>
-        <div className="approach-practices" aria-label="Areas of practice">
-          <div className="practice-line" data-reveal><span>01</span><strong>CAD &amp; mechanical design</strong><p>Fusion 360, Siemens NX, and learning to model with a real use in mind.</p></div>
-          <div className="practice-line" data-reveal><span>02</span><strong>Prototyping &amp; fabrication</strong><p>Preparing parts for printing and seeing how a chassis team works with composites.</p></div>
-          <div className="practice-line" data-reveal><span>03</span><strong>Experiment &amp; analysis</strong><p>Testing a prediction, checking the measurements, and being willing to revise it.</p></div>
+      </section>
+
+      <section className="new-work" id="selected-work" aria-labelledby="work-title">
+        <div className="page-wrap new-section-head">
+          <div><p className="new-index">02 / ON THE CAD BENCH</p><h2 id="work-title">Made on <em>purpose.</em></h2></div>
+          <p>Objects, concepts, and the wrong turns that taught me something.</p>
         </div>
-      </div>
-    </section>
+        <ProjectRail projects={featured} />
+        <div className="page-wrap new-work-end"><Link href="/projects" className="new-underlink">See every project <span aria-hidden="true">↗</span></Link></div>
+      </section>
 
-    <section id="selected-work" className="home-work dark-section chapter">
-      <div className="page-wrap">
-        <div className="section-intro split-intro" data-reveal="heading"><div><p className="eyebrow">02 / Off the drawing board</p><h2 className="narrative-title">A few things I <em>made, tried, and rethought.</em></h2></div><p>These are not just finished shapes. Each one marks a question I was trying to answer, and a detail I understood better by the end.</p></div>
-        {lead && <Link href={`/projects/${lead.slug}`} className="work-lead" aria-label={`Read the ${lead.title} case study`}>
-          <div className="work-lead-visual" data-reveal>{lead.coverImage && <Image src={lead.coverImage} alt={lead.coverAlt || lead.title} fill sizes="(max-width: 800px) 100vw, 58vw" className="object-contain" />}<span className="image-annotation">STUDY 01 / PRINT IN PLACE</span></div>
-          <div className="work-lead-copy"><p className="eyebrow">Selected build / Fusion 360</p><h3>{lead.title}</h3><p>A towel hook that grips fabric using a captive ball, gravity, and friction. The mechanism drew me in; the print clearances and mounting question reminded me that a CAD model is not a working object yet.</p><span className="work-learned">What stayed with me <b>The detail you add for fun can become the part that teaches you most.</b></span><span className="text-link">Read the whole process <span aria-hidden="true">↗</span></span></div>
-        </Link>}
-        <div className="work-minors">{more.map((project, index) => <Link key={project.slug} href={`/projects/${project.slug}`} className="work-minor" data-reveal><span className="work-minor-number">0{index + 2} / CASE STUDY</span><div className="work-minor-thumb">{project.coverImage && <Image src={project.coverImage} alt={project.coverAlt || project.title} fill sizes="(max-width: 800px) 100vw, 20vw" className="object-contain" />}</div><div><h3>{project.title}</h3><p>{project.shortDescription}</p></div><span className="work-minor-arrow" aria-hidden="true">↗</span></Link>)}</div>
-        <Link href="/projects" className="section-outlink">All project notes <span aria-hidden="true">↗</span></Link>
-      </div>
-    </section>
+      <section className="new-field" aria-labelledby="field-title">
+        <div className="page-wrap new-field-layout">
+          <div className="new-field-copy">
+            <p className="new-index">03 / OUT OF THE SCREEN</p>
+            <h2 id="field-title">The workshop<br /><em>has opinions.</em></h2>
+            <p>At Ecogenium, I am learning how chassis geometry, composites, and a team turn a neat model into a real decision.</p>
+            <Link href="/experience" className="new-underlink">Where I put it to work <span aria-hidden="true">↗</span></Link>
+          </div>
+          <figure className="new-field-photo">
+            <Image src="/images/experience/ecogenium-workshop.jpeg" alt="Composite material sample from Ecogenium's workshop" fill sizes="(max-width: 800px) 90vw, 48vw" className="object-cover" />
+            <figcaption>Field note / Ecogenium chassis team</figcaption>
+          </figure>
+        </div>
+      </section>
 
-    <section className="home-experience chapter">
-      <div className="page-wrap experience-layout">
-        <div className="experience-copy" data-reveal="heading"><p className="eyebrow">03 / Beyond my screen</p><h2 className="narrative-title">Now the work has a <em>workshop.</em></h2><p>At Ecogenium, I joined the chassis department of a student team developing a hydrogen fuel cell vehicle for the Shell Eco-marathon. I am still early in it. The most useful lessons so far have come from watching geometry, composites, fabrication, and team decisions affect one another.</p><p>Before this, a virtual internship at STAR taught me to turn an idea into a model people could discuss, while also showing me how far that model was from a buildable design.</p><div className="inline-actions"><Link href="/experience#ecogenium" className="button-primary">More about the work ↗</Link><Link href="/projects/star-test-pad" className="text-link">See the early concept ↗</Link></div></div>
-        <figure className="experience-visual" data-reveal><Image src="/images/experience/ecogenium-workshop.jpeg" alt="Composite material sample from Ecogenium's workshop" fill sizes="(max-width: 850px) 100vw, 46vw" className="object-cover"/><figcaption><span>FIELD NOTE / ECOGENIUM</span><span>Chassis team · Aachen</span></figcaption></figure>
-      </div>
-    </section>
+      <section className="new-research" aria-labelledby="research-title">
+        <div className="page-wrap new-research-layout">
+          <div className="new-research-copy">
+            <p className="new-index">04 / THE UNEXPECTED RESULT</p>
+            <h2 id="research-title">The data said <em>otherwise.</em></h2>
+            <p>I expected a wider launch-tube gap to shorten a projectile&apos;s range. Across the six gaps tested, the average went up. The no-gap control went farther still.</p>
+            <Link href="/research" className="new-underlink">Read the research <span aria-hidden="true">↗</span></Link>
+          </div>
+          <ProjectileEvidence />
+        </div>
+      </section>
 
-    <section className="home-inquiry paper-section chapter">
-      <div className="page-wrap inquiry-layout"><div className="inquiry-lead" data-reveal="heading"><p className="eyebrow">04 / When the data disagreed</p><h2 className="narrative-title">Sometimes the result tells me <em>I asked it wrong.</em></h2><p>In a projectile experiment, I thought a wider gap between the marble and launch tube would shorten its range. Across the six nonzero gaps I tested, average range instead rose from 1.40 m to 2.24 m. The no-gap control still travelled farther than any of them. I had to revisit the assumption, the launch setup, and what those measurements could actually prove.</p><Link href="/research" className="text-link">Read the research papers ↗</Link></div><div className="inquiry-side"><ProjectileEvidence /><div className="inquiry-beyond" data-reveal><p className="eyebrow">The work outside the workshop</p><p>Teaching with CRY taught me to change an explanation when it does not land. A Goethe scholarship made German a language I could actually live in. Competitions made me defend an idea under pressure. None of that stays outside my engineering work.</p><div className="inquiry-links"><Link href="/experience">People &amp; places ↗</Link><Link href="/competitions">Competitions ↗</Link></div></div></div></div>
-    </section>
+      <section className="new-writing" aria-labelledby="writing-title">
+        <div className="page-wrap new-writing-layout">
+          <div><p className="new-index">05 / NOTES FROM THE WORKSHOP</p><h2 id="writing-title">Still figuring<br /><em>it out.</em></h2><p>Short dispatches from the parts of engineering I am learning in public.</p><Link href="/writing" className="new-underlink">My writing <span aria-hidden="true">↗</span></Link></div>
+          <a className="new-writing-note" href="https://drishdedhia23.substack.com/p/entry-three-why-am-i-looking-for" target="_blank" rel="noopener noreferrer"><span className="new-index">THE LOGBOOK / ENTRY 03</span><strong>Why Am I Looking for <em>Shortcuts?</em></strong><span>On making a hotwire cutter instead of buying one, and the questions that followed.</span><span className="new-note-arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </section>
 
-    <section className="home-writing chapter">
-      <div className="page-wrap writing-home-layout"><div data-reveal="heading"><p className="eyebrow">05 / Notes before the final answer</p><h2 className="narrative-title">I write while I am <em>still figuring it out.</em></h2><p className="writing-home-description">I joined Ecogenium with more questions than answers. The Substack is where I record the mistakes, new terms, and small moments when something finally clicks, without waiting for a polished ending.</p><div className="inline-actions"><Link href="/writing" className="button-primary">Explore the writing ↗</Link><a href="https://drishdedhia23.substack.com/" target="_blank" rel="noopener noreferrer" className="text-link">Open Substack ↗</a></div></div><a className="writing-home-entry" href="https://drishdedhia23.substack.com/p/entry-three-why-am-i-looking-for" target="_blank" rel="noopener noreferrer" data-reveal="note"><span className="technical">THE LOGBOOK OF A LEARNING ENGINEER / 03</span><strong>Why Am I Looking for <em>Shortcuts?</em></strong><p>A hotwire cutter seemed like something we could make instead of buy. That opened a new set of questions about the frame, circuitry, and CAD.</p><span className="entry-bottom">20 SEP 2026 <span>Read the entry ↗</span></span></a></div>
-    </section>
-
-    <section className="home-routes paper-section chapter"><div className="page-wrap"><div className="section-intro split-intro"><div><p className="eyebrow">06 / Pick up a thread</p><h2 className="narrative-title">Follow the part that <em>caught your eye.</em></h2></div><p>A quick look might be enough for today. If a project, question, or experience stayed with you, there is more behind it.</p></div><nav className="route-list" aria-label="Explore the portfolio">{routes.map(route => <Link key={route.href} href={route.href} className="route-row"><span className="technical">{route.number}</span><strong>{route.title}</strong><span>{route.detail}</span><span className="route-arrow" aria-hidden="true">↗</span></Link>)}</nav></div></section>
-  </>;
+      <section className="new-explore" aria-labelledby="explore-title">
+        <div className="page-wrap"><p className="new-index">KEEP FOLLOWING THE THREAD</p><h2 id="explore-title">Beyond <em>CAD.</em></h2><nav aria-label="Explore more"><Link href="/competitions">Competitions <span aria-hidden="true">↗</span></Link><Link href="/about">The person behind the CAD <span aria-hidden="true">↗</span></Link><Link href="/recruiter">The quick version <span aria-hidden="true">↗</span></Link></nav></div>
+      </section>
+    </div>
+  );
 }
