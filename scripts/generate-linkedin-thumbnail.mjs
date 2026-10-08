@@ -2,42 +2,45 @@ import { writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
-const root = process.cwd();
-const imagePath = path.join(root, "public/images/projects/self-locking-hook/studio-visualization.png");
-const outputDir = path.join(root, "public/brand");
-
-// Embed a compact copy of a real CAD visualization so the SVG is self-contained.
-const cadImage = await sharp(imagePath).resize(700, 700).png({ palette: true, quality: 85 }).toBuffer();
-const imageUri = `data:image/png;base64,${cadImage.toString("base64")}`;
-
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+const outputDir = path.join(process.cwd(), "public/brand");
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Drish Dedhia mechanical engineering portfolio</title>
-  <desc id="desc">Original portfolio graphic featuring Drish Dedhia's name, RWTH Aachen, and his self-locking towel hook CAD study.</desc>
+  <desc id="desc">An editorial poster reading “I want to know how it works.”, with abstract construction lines and Drish Dedhia's name in a small byline.</desc>
   <defs>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#72918a" stroke-opacity=".12" stroke-width="1"/></pattern>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101f27"/><stop offset="1" stop-color="#0a131a"/></linearGradient>
-    <clipPath id="imageClip"><rect x="812" y="159" width="302" height="305" rx="10"/></clipPath>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17283d"/><stop offset="1" stop-color="#0b1422"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#638bc7" stop-opacity=".23"/><stop offset="1" stop-color="#638bc7" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#7f97b8" stroke-opacity=".11" stroke-width="1"/></pattern>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/><rect width="1200" height="630" fill="url(#grid)"/>
-  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#48635b" stroke-width="2"/>
-  <path d="M 76 82 H 687" stroke="#b9e68a" stroke-width="4"/><path d="M 76 534 H 687" stroke="#48635b" stroke-width="2"/>
-  <g font-family="Arial, Helvetica, sans-serif">
-    <text x="76" y="146" fill="#b9e68a" font-size="22" font-weight="700" letter-spacing="3.7">MECHANICAL ENGINEERING PORTFOLIO</text>
-    <text x="70" y="307" fill="#f1f5ed" font-size="101" font-weight="800" letter-spacing="-6">Drish</text>
-    <text x="70" y="408" fill="#f1f5ed" font-size="101" font-weight="800" letter-spacing="-6">Dedhia<tspan fill="#b9e68a">.</tspan></text>
-    <text x="76" y="474" fill="#c7d6d2" font-size="30" font-weight="600">Mechanical Engineering  |  RWTH Aachen</text>
-    <text x="76" y="578" fill="#9db9ae" font-size="20" font-weight="700" letter-spacing="3">CAD   /   CHASSIS   /   RESEARCH</text>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <ellipse cx="991" cy="291" rx="340" ry="350" fill="url(#glow)"/>
+  <path d="M64 66H1136M64 565H1136" fill="none" stroke="#6f8eae" stroke-width="1.5"/>
+  <path d="M64 66H228M986 565H1136" fill="none" stroke="#a6c8ff" stroke-width="4"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="66" y="108" fill="#a6c8ff" font-size="18" font-weight="700" letter-spacing="3.2">A MECHANICAL ENGINEERING PORTFOLIO</text>
+    <text x="61" y="241" fill="#f3f5fa" font-size="78" font-weight="700" letter-spacing="-3.5">I want to know</text>
+    <text x="62" y="333" fill="#f3f5fa" font-size="78" font-weight="700" letter-spacing="-3.5">how it</text>
+    <text x="62" y="441" fill="#a6c8ff" font-family="Georgia,Times New Roman,serif" font-style="italic" font-size="116" letter-spacing="-5">works.</text>
+    <text x="66" y="510" fill="#cad7e8" font-size="24" font-weight="500">The ideas, the wrong turns, and what I learned.</text>
+    <text x="66" y="602" fill="#d7e4f5" font-size="18" font-weight="600" letter-spacing=".5">Drish Dedhia  ·  RWTH Aachen</text>
+    <text x="953" y="602" fill="#a6c8ff" font-size="15" font-weight="700" letter-spacing="2.1">EXPLORE THE WORK ↗</text>
   </g>
-  <g>
-    <rect x="785" y="64" width="354" height="492" rx="25" fill="#172931" stroke="#829c88" stroke-width="2"/>
-    <path d="M 785 120 H 1139" stroke="#829c88" stroke-width="2"/>
-    <circle cx="810" cy="92" r="5" fill="#b9e68a"/><circle cx="827" cy="92" r="5" fill="#829c88"/><circle cx="844" cy="92" r="5" fill="#829c88"/>
-    <text x="877" y="98" fill="#d7e7d5" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5">CAD STUDY / 02</text>
-    <rect x="812" y="159" width="302" height="305" rx="10" fill="#f4f1e9"/>
-    <image x="812" y="159" width="302" height="305" preserveAspectRatio="xMidYMid slice" clip-path="url(#imageClip)" href="${imageUri}" xlink:href="${imageUri}"/>
-    <path d="M 804 148 V 164 H 820 M 1106 148 V 164 H 1122 M 804 459 V 475 H 820 M 1106 459 V 475 H 1122" fill="none" stroke="#b9e68a" stroke-width="2"/>
-    <text x="812" y="503" fill="#f1f5ed" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Self-locking towel hook</text>
-    <text x="812" y="531" fill="#b9e68a" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.4">FUSION 360  /  PRINT-IN-PLACE STUDY</text>
+  <g fill="none" stroke="#82a6d4" stroke-width="2">
+    <circle cx="971" cy="300" r="177" stroke-opacity=".55"/>
+    <circle cx="971" cy="300" r="128" stroke-dasharray="5 12" stroke-opacity=".75"/>
+    <circle cx="971" cy="300" r="62" stroke-opacity=".8"/>
+    <path d="M971 82V518M753 300H1189" stroke-opacity=".35"/>
+    <path d="M844 173L1098 427M1098 173L844 427" stroke-opacity=".25"/>
+    <path d="M971 123A177 177 0 0 1 1138 241" stroke="#d8e7ff" stroke-width="6" stroke-linecap="round"/>
+    <path d="M844 427A177 177 0 0 1 804 227" stroke="#a6c8ff" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <circle cx="971" cy="300" r="9" fill="#a6c8ff"/>
+  <circle cx="1138" cy="241" r="6" fill="#d8e7ff"/>
+  <circle cx="844" cy="427" r="6" fill="#a6c8ff"/>
+  <g fill="#c5d0e0" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2.2">
+    <text x="812" y="102">ASK / 01</text>
+    <text x="1016" y="487">BUILD / 02</text>
+    <text x="794" y="510">RETHINK / 03</text>
   </g>
 </svg>`;
 
