@@ -37,7 +37,6 @@ export default function ProjectRail({ projects }: { projects: ProjectMeta[] }) {
     <div className="new-rail-wrap">
       <div className="page-wrap new-rail-controls">
         <span className="new-rail-count"><b>{String(active + 1).padStart(2, "0")}</b> / {String(projects.length).padStart(2, "0")}</span>
-        <span className="new-rail-hint">SWIPE / TRACKPAD / ARROWS</span>
         <div className="new-rail-buttons"><button type="button" onClick={() => move(-1)} disabled={active === 0} aria-label="Previous project">←</button><button type="button" onClick={() => move(1)} disabled={active === projects.length - 1} aria-label="Next project">→</button></div>
       </div>
       <div className="new-project-rail" ref={rail} onScroll={syncActive} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); move(1); } else if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); } }} role="region" aria-label="Featured projects" tabIndex={0}>

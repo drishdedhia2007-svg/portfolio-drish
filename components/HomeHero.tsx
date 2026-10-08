@@ -15,15 +15,13 @@ export default function HomeHero() {
         </div>
         <div className="new-hero-portrait">
           <TechnicalSpline className="new-portrait-spline" variant="short" />
-          <span className="new-portrait-coordinate" aria-hidden="true">X 07.3 / Y 21.8</span>
           <Link href="/about" className="new-portrait-link" aria-label="Meet Drish Dedhia on the About page">
-            <span className="new-portrait-image"><Image src="/images/about/drish-formal.jpg" alt="Drish Dedhia smiling and facing the camera in a blazer" fill priority sizes="(max-width: 800px) 230px, 270px" className="object-cover" /></span>
+            <span className="new-portrait-image"><Image src="/images/about/drish-formal.jpg" alt="Drish Dedhia smiling and facing the camera in a blazer" width={739} height={1600} priority sizes="(max-width: 800px) 220px, 260px" className="new-portrait-photo" /></span>
             <span className="new-portrait-caption">A little more about me <span aria-hidden="true">↗</span></span>
           </Link>
-          <span className="new-portrait-index" aria-hidden="true">FIG. 01 / THE PERSON</span>
         </div>
       </div>
-      <div className="page-wrap new-hero-floor"><span>DRAWING · BUILDING · QUESTIONING</span><a href="#approach">Scroll a little <span aria-hidden="true">↓</span></a></div>
+      <div className="page-wrap new-hero-floor"><span>DRAWING · BUILDING · QUESTIONING</span></div>
     </section>
   );
 }
