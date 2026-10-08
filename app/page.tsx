@@ -2,6 +2,7 @@ import Link from "next/link";
 import HomeHero from "@/components/HomeHero";
 import ProjectRail from "@/components/ProjectRail";
 import TechnicalSpline from "@/components/TechnicalSpline";
+import LineCluster from "@/components/LineCluster";
 import { getAllProjects } from "@/lib/projects";
 
 const featuredSlugs = ["self-locking-towel-hook", "star-test-pad", "miniature-winners-podium", "door-stopper", "propeller"];
@@ -37,7 +38,7 @@ export default function Home() {
               <strong>Ecogenium</strong>
               <span>Hydrogen vehicle · RWTH Aachen</span>
               <p>A chassis part has to work in the shop. I help prepare tooling, fabricate composite components, and adjust the process when production gets tricky.</p>
-              <svg className="new-role-trajectory" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 85 C92 74 117 22 205 32 S310 102 430 24" /></svg>
+              <LineCluster kind="fabrication" className="new-role-trajectory" />
               <span className="new-role-arrow" aria-hidden="true">↗</span>
             </Link>
             <Link href="/experience#student-assistant" className="new-role">
@@ -45,7 +46,7 @@ export default function Home() {
               <strong>WZL | IQS</strong>
               <span>Industrial X-ray CT · RWTH Aachen</span>
               <p>A CT scan should tell us something useful about a part. I help prepare measurements, reconstruct volumes, and evaluate quality without cutting it open.</p>
-              <svg className="new-role-trajectory" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 27 C100 28 122 96 213 80 S316 20 430 73" /></svg>
+              <LineCluster kind="inspection" className="new-role-trajectory" />
               <span className="new-role-arrow" aria-hidden="true">↗</span>
             </Link>
           </div>
@@ -82,7 +83,7 @@ export default function Home() {
         <div className="page-wrap new-writing-layout">
           <div><p className="new-index">04 / WRITING</p><h2 id="writing-title">What I don&apos;t want <em>to forget.</em></h2></div>
           <div className="new-writing-door"><p className="new-writing-kicker">MY SUBSTACK</p><h3>The Logbook of a <em>Learning Engineer</em></h3><p>Workshop problems rarely wait for a polished ending. My Ecogenium logbook keeps the mistakes, new terms, and small breakthroughs in the story.</p><Link href="/writing" className="new-underlink">Open the logbook <span aria-hidden="true">↗</span></Link></div>
-          <svg className="new-writing-thread" viewBox="0 0 900 170" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 129 C170 147 259 31 444 61 S662 153 910 36" /></svg>
+          <LineCluster kind="writing" className="new-writing-thread" />
         </div>
       </section>
 

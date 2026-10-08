@@ -27,6 +27,12 @@
 @keyframes spline-draw { from { stroke-dashoffset: 1250; } to { stroke-dashoffset: 0; } }
 @keyframes spline-breathe { 50% { transform: translateY(-9px); opacity: .7; } }
 .spline-curve-one { stroke-dasharray: 1250; animation: spline-draw 2.4s cubic-bezier(.18,.78,.2,1) both; }
+.line-cluster-wrap { pointer-events: none; }
+.line-cluster { display: block; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.line-cluster path { stroke: currentColor; stroke-width: 1.15; vector-effect: non-scaling-stroke; }
+.line-cluster path:nth-child(1) { opacity: .75; }
+.line-cluster path:nth-child(2) { opacity: .48; }
+.line-cluster path:nth-child(3) { opacity: .27; }
 
 /* The face is a detail; type and an evolving construction line establish the hero. */
 .new-hero { background: radial-gradient(ellipse at 76% 23%,color-mix(in srgb,var(--aura-violet) 34%,transparent),transparent 41%),linear-gradient(150deg,var(--tone-1),var(--tone-3) 67%,var(--tone-4)); }
@@ -72,9 +78,15 @@
 .new-rail-wrap { margin-top: clamp(1.7rem,3vw,2.8rem); }
 .new-project { position: relative; isolation: isolate; flex-basis: clamp(300px,32vw,420px); min-height: 370px; padding: 1.3rem 1.2rem 1.4rem 0; border-top: 1px solid color-mix(in srgb,var(--aura-rose) 35%,var(--line-dark)); transition: border-color .3s, transform .4s; }
 .new-project::before { content: ""; position: absolute; z-index: -1; inset: -36px; pointer-events: none; background: radial-gradient(circle 190px at var(--light-x,50%) var(--light-y,48%),color-mix(in srgb,var(--aura-rose) 30%,transparent),color-mix(in srgb,var(--aura-violet) 12%,transparent) 48%,transparent 78%); filter: blur(13px); opacity: 0; transform: scale(.78); transform-origin: var(--light-x,50%) var(--light-y,48%); transition: opacity .5s ease, transform .65s cubic-bezier(.2,.75,.2,1); }
-.new-project-trajectory { position: absolute; z-index: -1; top: 23%; right: -16%; width: 86%; height: 110px; overflow: visible; color: var(--aura-rose); pointer-events: none; opacity: 0; transition: opacity .5s; }
-.new-project-trajectory path { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 520; stroke-dashoffset: 520; transition: stroke-dashoffset 1.3s cubic-bezier(.25,.7,.25,1); }
-.new-project:hover .new-project-trajectory, .new-project:focus-visible .new-project-trajectory { opacity: .42; }
+.new-project-trajectory { position: absolute; z-index: -1; top: 28%; right: -8%; width: 92%; height: 120px; color: var(--aura-rose); opacity: 0; transform: translateY(12px) rotate(var(--line-angle,-8deg)); transition: opacity .55s, transform .85s cubic-bezier(.2,.7,.2,1); }
+.new-project-trajectory path { stroke-dasharray: 560; stroke-dashoffset: 560; transition: stroke-dashoffset 1.25s cubic-bezier(.2,.7,.2,1); }
+.new-project-trajectory path:nth-child(2) { transition-delay: .08s; }
+.new-project-trajectory path:nth-child(3) { transition-delay: .16s; }
+.new-project:nth-child(2) .new-project-trajectory { top: 54%; right: 7%; width: 84%; --line-angle: 13deg; }
+.new-project:nth-child(3) .new-project-trajectory { top: 18%; right: -14%; width: 98%; --line-angle: -15deg; }
+.new-project:nth-child(4) .new-project-trajectory { top: 50%; right: -2%; width: 88%; --line-angle: 8deg; }
+.new-project:nth-child(5) .new-project-trajectory { top: 34%; right: -10%; width: 96%; --line-angle: -5deg; }
+.new-project:hover .new-project-trajectory, .new-project:focus-visible .new-project-trajectory { opacity: .58; transform: translateY(0) rotate(var(--line-angle,-8deg)); }
 .new-project:hover .new-project-trajectory path, .new-project:focus-visible .new-project-trajectory path { stroke-dashoffset: 0; }
 .new-project:hover::before, .new-project:focus-visible::before { opacity: 1; transform: scale(1); }
 .new-project:nth-child(even) { padding-top: 1.3rem; }
@@ -103,9 +115,14 @@
 .new-role:hover::before, .new-role:focus-visible::before { opacity: 1; }
 .new-role:hover .new-role-meta, .new-role:focus-visible .new-role-meta, .new-role:hover .new-role-arrow, .new-role:focus-visible .new-role-arrow { color: var(--role-active-ink); }
 .new-role:hover > span:nth-of-type(2), .new-role:focus-visible > span:nth-of-type(2), .new-role:hover p, .new-role:focus-visible p { color: var(--role-active-muted); }
-.new-role-trajectory { position: absolute; z-index: -1; right: -4%; bottom: -14%; width: 55%; height: 110px; overflow: visible; color: var(--role-active-ink); pointer-events: none; opacity: 0; transform: translateX(-12px); transition: opacity .5s, transform .65s; }
-.new-role-trajectory path { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; stroke-dasharray: 520; stroke-dashoffset: 520; transition: stroke-dashoffset 1.2s; }
-.new-role:hover .new-role-trajectory, .new-role:focus-visible .new-role-trajectory { opacity: .34; transform: translateX(0); }
+.new-role-trajectory { position: absolute; z-index: -1; right: -5%; bottom: -18%; width: 65%; height: 120px; color: var(--role-active-ink); opacity: 0; transform: translateX(-18px) rotate(-8deg); transition: opacity .45s, transform .85s cubic-bezier(.2,.7,.2,1); }
+.new-role-trajectory path { stroke-dasharray: 560; stroke-dashoffset: 560; transition: stroke-dashoffset 1.15s cubic-bezier(.2,.7,.2,1); }
+.new-role-trajectory path:nth-child(2) { transition-delay: .09s; }
+.new-role-trajectory path:nth-child(3) { transition-delay: .18s; }
+.new-role:nth-child(2) .new-role-trajectory { top: -8%; right: -10%; bottom: auto; width: 72%; transform: translateX(18px) rotate(10deg); }
+.new-role:nth-child(2) .new-role-trajectory path { transition-duration: 1.4s; }
+.new-role:hover .new-role-trajectory, .new-role:focus-visible .new-role-trajectory { opacity: .46; transform: translateX(0) rotate(-8deg); }
+.new-role:nth-child(2):hover .new-role-trajectory, .new-role:nth-child(2):focus-visible .new-role-trajectory { transform: translateX(0) rotate(10deg); }
 .new-role:hover .new-role-trajectory path, .new-role:focus-visible .new-role-trajectory path { stroke-dashoffset: 0; }
 .new-role-meta { grid-column: 1 / -1; color: var(--aura-rose); font: .6rem var(--font-technical); letter-spacing: .07em; }
 .new-role strong { grid-column: 1; margin-top: .6rem; font-size: clamp(1.8rem,2.7vw,2.8rem); font-weight: 400; letter-spacing: -.055em; line-height: 1; }
@@ -140,9 +157,8 @@
 /* The writing door says just enough. */
 .new-writing { padding-block: clamp(4.5rem,6vw,6.5rem); }
 .new-writing-layout { position: relative; isolation: isolate; grid-template-columns: 1fr .92fr; gap: clamp(2rem,8vw,9rem); }
-.new-writing-thread { position: absolute; z-index: -1; top: 28%; left: 9%; width: 82%; height: 170px; overflow: visible; color: var(--aura-rose); pointer-events: none; opacity: .2; animation: writing-thread-drift 16s ease-in-out infinite alternate; }
-.new-writing-thread path { stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
-@keyframes writing-thread-drift { to { transform: translate(12px,-8px); opacity: .34; } }
+.new-writing-thread { position: absolute; z-index: -1; top: 43%; left: 4%; width: 88%; height: 190px; color: var(--aura-rose); opacity: .26; transform: rotate(-7deg); animation: writing-thread-drift 19s ease-in-out infinite alternate; }
+@keyframes writing-thread-drift { to { transform: translate(18px,-12px) rotate(-3deg); opacity: .38; } }
 .new-writing h2 { max-width: 610px; }
 .new-writing-door { position: relative; isolation: isolate; padding: 1.4rem 0 1rem 1.6rem; border-left: 1px solid var(--aura-rose); }
 .new-writing-door::before { content: ""; position: absolute; z-index: -1; inset: -1.2rem -1.5rem -1.2rem -1.6rem; background: linear-gradient(115deg,color-mix(in srgb,var(--aura-violet) 15%,transparent),color-mix(in srgb,var(--aura-rose) 7%,transparent) 42%,transparent 80%); opacity: .35; transform: translateX(-8px); transition: opacity .8s, transform 1.1s; }
@@ -212,7 +228,9 @@ html[data-theme="light"] { --role-active-bg: #244b69; --role-active-ink: #f3f8fb
   .new-paper { flex-basis: 75vw; }
   .new-writing-door { padding-left: 1rem; }
   .new-writing-door h3 { font-size: 2.2rem; }
-  .new-writing-thread { display: none; }
+  .new-project-trajectory { width: 98%; }
+  .new-role-trajectory { width: 76%; }
+  .new-writing-thread { top: 22%; left: 48%; width: 84%; height: 110px; opacity: .18; transform: rotate(12deg); animation: none; }
   .new-method--closing { padding-block: 3.5rem; }
   .new-method--closing h2 { font-size: clamp(2.8rem,9vw,3.6rem); }
 }
