@@ -10,8 +10,8 @@ export default function HomeHero() {
         <div className="new-hero-copy">
           <p className="new-index">DRISH DEDHIA / MECHANICAL ENGINEERING / RWTH AACHEN</p>
           <h1 id="home-title">Curiosity has <em>moving parts.</em></h1>
-          <p>I like finding out what happens when a question becomes a model, a test, or something I can hold in my hands. Usually, the interesting part starts when the first answer is wrong.</p>
-          <div className="new-hero-links"><a href="#selected-work" className="new-pill-link">See what I make <span aria-hidden="true">↗</span></a><Link href="/recruiter" className="new-underlink">A quick view for recruiters <span aria-hidden="true">↗</span></Link></div>
+          <p>The interesting part starts when a neat model meets an awkward result. I follow that moment through CAD, composite chassis work, and X-ray CT scans.</p>
+          <div className="new-hero-links"><a href="#build-sheet" className="new-pill-link">See what I&apos;m working on <span aria-hidden="true">↗</span></a><Link href="/recruiter" className="new-underlink">A quick view for recruiters <span aria-hidden="true">↗</span></Link></div>
         </div>
         <div className="new-hero-portrait">
           <TechnicalSpline className="new-portrait-spline" variant="short" />

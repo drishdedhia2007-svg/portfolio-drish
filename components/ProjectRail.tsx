@@ -50,6 +50,7 @@ export default function ProjectRail({ projects }: { projects: ProjectMeta[] }) {
             event.currentTarget.style.removeProperty("--light-x");
             event.currentTarget.style.removeProperty("--light-y");
           }}>
+            <svg className="new-project-trajectory" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 89 C87 87 108 18 204 30 S307 108 430 26" /></svg>
             <div className="new-project-copy"><span className="new-project-number">0{index + 1} / {project.category?.[0] ?? "CAD"}</span><h3>{project.title}</h3><p>{captions[project.slug] ?? project.shortDescription}</p></div>
             <div className="new-project-art">
               {project.coverImage && <div className="new-project-image"><Image src={project.coverImage} alt={project.coverAlt || project.title} fill sizes="180px" className="object-contain" /></div>}

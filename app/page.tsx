@@ -24,47 +24,28 @@ export default function Home() {
     <div className="new-home">
       <HomeHero />
 
-      <section className="new-method" id="approach" aria-labelledby="method-title">
-        <TechnicalSpline className="new-method-spline" variant="wide" />
-        <div className="page-wrap new-method-inner">
-          <p className="new-index">01 / A LITTLE ABOUT ME</p>
-          <h2 id="method-title">Make it.<br /><em>Then make it better.</em></h2>
-          <div className="new-method-bottom">
-            <p>I study mechanical engineering at RWTH Aachen. I love the moment an idea leaves my head and meets dimensions, materials, and other people&apos;s questions.</p>
-            <Link href="/about" className="new-underlink">Get to know me <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="new-work" id="selected-work" aria-labelledby="work-title">
-        <div className="page-wrap new-section-head">
-          <div><p className="new-index">02 / SELECTED WORK</p><h2 id="work-title">Ideas with <em>edges.</em></h2></div>
-          <p>A few things I&apos;ve modelled, questioned, and learned from.</p>
-        </div>
-        <ProjectRail projects={featured} />
-        <div className="page-wrap new-work-end"><Link href="/projects" className="new-underlink">All projects and the stories behind them <span aria-hidden="true">↗</span></Link></div>
-      </section>
-
-      <section className="new-field" aria-labelledby="field-title">
+      <section className="new-field" id="build-sheet" aria-labelledby="field-title">
         <div className="page-wrap new-field-layout">
           <div className="new-field-copy">
-            <p className="new-index">03 / IN PROGRESS</p>
-            <h2 id="field-title">On the <em>build sheet.</em></h2>
-            <p>Building a chassis in one team; looking inside components in another.</p>
+            <p className="new-index">01 / CURRENT WORK</p>
+            <h2 id="field-title">The <em>build sheet.</em></h2>
+            <p>Engineering gets interesting when a part leaves the CAD window. I build composite chassis components and help inspect technical parts with industrial CT.</p>
           </div>
           <div className="new-role-list">
             <Link href="/experience#ecogenium" className="new-role">
               <span className="new-role-meta">01 / CHASSIS DESIGN &amp; PRODUCTION</span>
               <strong>Ecogenium</strong>
               <span>Hydrogen vehicle · RWTH Aachen</span>
-              <p>Fabricating composite chassis components, preparing tooling, and solving production snags through testing.</p>
+              <p>A chassis part has to work in the shop. I help prepare tooling, fabricate composite components, and adjust the process when production gets tricky.</p>
+              <svg className="new-role-trajectory" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 85 C92 74 117 22 205 32 S310 102 430 24" /></svg>
               <span className="new-role-arrow" aria-hidden="true">↗</span>
             </Link>
             <Link href="/experience#student-assistant" className="new-role">
               <span className="new-role-meta">02 / STUDENT RESEARCH ASSISTANT</span>
               <strong>WZL | IQS</strong>
               <span>Industrial X-ray CT · RWTH Aachen</span>
-              <p>Helping prepare scans, reconstruct 3D volume data, and evaluate component quality without cutting the component open.</p>
+              <p>A CT scan should tell us something useful about a part. I help prepare measurements, reconstruct volumes, and evaluate quality without cutting it open.</p>
+              <svg className="new-role-trajectory" viewBox="0 0 420 110" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 27 C100 28 122 96 213 80 S316 20 430 73" /></svg>
               <span className="new-role-arrow" aria-hidden="true">↗</span>
             </Link>
           </div>
@@ -72,10 +53,19 @@ export default function Home() {
         <TechnicalSpline className="new-field-spline" variant="short" />
       </section>
 
+      <section className="new-work" id="selected-work" aria-labelledby="work-title">
+        <div className="page-wrap new-section-head">
+          <div><p className="new-index">02 / PROJECTS</p><h2 id="work-title">What I tried, <em>and why.</em></h2></div>
+          <p>A tidy render can hide a bad assumption. These CAD studies show the choices, mistakes, and new tools behind each idea.</p>
+        </div>
+        <ProjectRail projects={featured} />
+        <div className="page-wrap new-work-end"><Link href="/projects" className="new-underlink">All projects and the stories behind them <span aria-hidden="true">↗</span></Link></div>
+      </section>
+
       <section className="new-research" aria-labelledby="research-title">
         <div className="page-wrap">
-          <p className="new-index">04 / RESEARCH</p>
-          <div className="new-research-head"><h2 id="research-title">Where the <em>why</em> went.</h2><p>Experiments and models that got more interesting when the first answer did not hold.</p></div>
+          <p className="new-index">03 / RESEARCH</p>
+          <div className="new-research-head"><h2 id="research-title">I had to <em>find out.</em></h2><p>Some questions get more interesting when the evidence disagrees. These papers follow experiments and models through the assumptions that did not hold.</p></div>
           <nav className="new-paper-line" aria-label="Research papers">
             {research.map((paper, index) => <Link href="/research" className="new-paper" key={paper.title}>
               <span className="new-paper-meta">{String(index + 1).padStart(2, "0")} / {paper.field}</span>
@@ -90,14 +80,22 @@ export default function Home() {
 
       <section className="new-writing" aria-labelledby="writing-title">
         <div className="page-wrap new-writing-layout">
-          <div><p className="new-index">05 / WRITING</p><h2 id="writing-title">And the thoughts <em>in between.</em></h2></div>
-          <div className="new-writing-door"><p className="new-writing-kicker">MY SUBSTACK</p><h3>The Logbook of a <em>Learning Engineer</em></h3><p>Notes from learning in public: new questions, small mistakes, and the occasional thing that finally clicks.</p><Link href="/writing" className="new-underlink">Open the logbook <span aria-hidden="true">↗</span></Link></div>
+          <div><p className="new-index">04 / WRITING</p><h2 id="writing-title">What I don&apos;t want <em>to forget.</em></h2></div>
+          <div className="new-writing-door"><p className="new-writing-kicker">MY SUBSTACK</p><h3>The Logbook of a <em>Learning Engineer</em></h3><p>Workshop problems rarely wait for a polished ending. My Ecogenium logbook keeps the mistakes, new terms, and small breakthroughs in the story.</p><Link href="/writing" className="new-underlink">Open the logbook <span aria-hidden="true">↗</span></Link></div>
+          <svg className="new-writing-thread" viewBox="0 0 900 170" fill="none" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M-10 129 C170 147 259 31 444 61 S662 153 910 36" /></svg>
         </div>
       </section>
 
-      <section className="new-explore" aria-labelledby="explore-title">
-        <TechnicalSpline className="new-explore-spline" variant="short" />
-        <div className="page-wrap"><p className="new-index">IF YOU WANT TO GO FURTHER</p><h2 id="explore-title">There&apos;s more to <em>the story.</em></h2><nav aria-label="Explore more"><Link href="/about">About me <span aria-hidden="true">↗</span></Link><Link href="/experience">Experience <span aria-hidden="true">↗</span></Link><Link href="/competitions">Competitions <span aria-hidden="true">↗</span></Link><Link href="/recruiter">A quick view <span aria-hidden="true">↗</span></Link></nav></div>
+      <section className="new-method new-method--closing" id="approach" aria-labelledby="method-title">
+        <TechnicalSpline className="new-method-spline" variant="wide" />
+        <div className="page-wrap new-method-inner">
+          <p className="new-index">05 / A LITTLE ABOUT ME</p>
+          <h2 id="method-title">Make it.<br /><em>Then make it better.</em></h2>
+          <div className="new-method-bottom">
+            <p>I grew up taking things apart in Mumbai. At RWTH Aachen, the questions are bigger, but I still learn by making, measuring, and asking what I missed.</p>
+            <Link href="/about" className="new-underlink">Get to know me <span aria-hidden="true">↗</span></Link>
+          </div>
+        </div>
       </section>
     </div>
   );
