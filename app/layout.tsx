@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Drish Dedhia | Mechanical Engineering Portfolio",
     description: "CAD projects, engineering experience, research, and notes from RWTH Aachen.",
-    images: [{ url: "/brand/linkedin-portfolio-thumbnail.png", width: 1200, height: 630, alt: "Drish Dedhia, Mechanical Engineering at RWTH Aachen" }],
+    images: [{ url: "/brand/linkedin-portfolio-thumbnail.png?v=cad-study", width: 1200, height: 630, alt: "Drish Dedhia, Mechanical Engineering at RWTH Aachen" }],
   },
 };
 
