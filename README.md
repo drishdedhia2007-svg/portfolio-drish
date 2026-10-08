@@ -64,6 +64,7 @@ Only `.md` files inside `content/projects/` are read as projects. Files directly
 | Content | File |
 | --- | --- |
 | Home introduction and route cards | `components/HomeHero.tsx`, `app/page.tsx` |
+| Writing introduction and published Substack entry links | `app/writing/page.tsx` |
 | Experience and scholarship entries | `app/experience/page.tsx` |
 | Research paper summaries and PDF links | `app/research/page.tsx`, PDFs in `public/papers/` |
 | Competition outcomes | `app/competitions/page.tsx` |
@@ -71,6 +72,7 @@ Only `.md` files inside `content/projects/` are read as projects. Files directly
 | Recruiter summary and featured project slugs | `app/recruiter/page.tsx` |
 | Shared navigation and contact footer | `components/Navbar.tsx`, `components/Footer.tsx` |
 | Colors, spacing, and typography | `app/globals.css` |
+| LinkedIn and website sharing thumbnail | `public/brand/linkedin-portfolio-thumbnail.svg` and `.png` |
 
 The Projects list and Skills page read project Markdown automatically. Experience, research, competitions, and About entries currently live in the page files listed above; they do not have an admin dashboard. Keep claims precise: distinguish CAD studies from printed or tested objects, identify tutorial-guided work, and describe mistakes and what changed.
 
@@ -85,6 +87,7 @@ Run `npm run lint` and `npm run build` in the project terminal. A successful bui
 - `/projects` - filterable project archive
 - `/projects/[slug]` - full case study
 - `/research` - research summaries and PDF links
+- `/writing` - published Logbook entries linked to Substack
 - `/competitions` - competition results and stories
 - `/skills` - skills linked to project evidence
 - `/about` - education, languages, background, and childhood projects

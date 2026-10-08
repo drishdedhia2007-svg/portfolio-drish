@@ -14,7 +14,7 @@ coverCaption: "Studio visualization based on my original concept render; origina
 
 ## The Brief
 
-In 2023 I joined the virtual Mechanical Design Internship Program at STAR — Space Technology and Aeronautical Rocketry. Our team needed to turn a static motor test pad idea into something people could see and discuss. I worked on the mechanical concept in Fusion 360 and helped the team prepare a design proposal. My wider internship work also included Proteus.
+In 2023 I joined the virtual Mechanical Design Internship Program at STAR (Space Technology and Aeronautical Rocketry). Our team needed to turn a static motor test pad idea into something people could see and discuss. I worked on the mechanical concept in Fusion 360 and helped the team prepare a design proposal. My wider internship work also included Proteus.
 
 At that stage, I was still learning what a CAD model needs to do. My immediate goal was to make our idea visible enough for a conversation, not to deliver a finished, buildable test rig.
 

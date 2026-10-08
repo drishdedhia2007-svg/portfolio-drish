@@ -10,10 +10,10 @@ shortDescription: "An early handbuilt model that sparked my interest in mechanic
 ## Why I Built This
 
 My fascination with engines and the open road eventually led me to
-motorcycles — and specifically to cruisers. Harley-Davidsons, in
+motorcycles, specifically cruisers. Harley-Davidsons, in
 particular, captivated me: the presence, the power, the sheer aura of
 them. Digging through every model, I settled on a favorite: the Sport
-Glide. I couldn't build the real thing, obviously — but I could build
+Glide. I couldn't build the real thing, obviously, but I could build
 a version of it. So I decided to try, using nothing but newspaper.
 
 ## My Approach
