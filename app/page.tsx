@@ -1,16 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
 import HomeHero from "@/components/HomeHero";
 import ProjectRail from "@/components/ProjectRail";
-import ProjectileEvidence from "@/components/ProjectileEvidence";
+import TechnicalSpline from "@/components/TechnicalSpline";
 import { getAllProjects } from "@/lib/projects";
 
-const featuredSlugs = [
-  "self-locking-towel-hook",
-  "star-test-pad",
-  "miniature-winners-podium",
-  "door-stopper",
-  "propeller",
+const featuredSlugs = ["self-locking-towel-hook", "star-test-pad", "miniature-winners-podium", "door-stopper", "propeller"];
+
+const research = [
+  { field: "PHYSICS", title: "How magnet arrangement changes an induction response", note: "The geometry of a magnetic field, measured at different speeds." },
+  { field: "EXPERIMENTAL MECHANICS", title: "When my projectile hypothesis failed", note: "A neat prediction met a result that went the other way." },
+  { field: "MATHEMATICS", title: "What a guitar string looks like in frequency space", note: "The hidden structure inside a familiar sound." },
+  { field: "ECONOMICS", title: "Three policy choices, three different trade-offs", note: "Models make the costs of a decision harder to ignore." },
+  { field: "CHEMISTRY / DRAFT", title: "Do cooking oils release different amounts of heat?", note: "An open-flame experiment whose answer is still unresolved." },
 ];
 
 export default function Home() {
@@ -24,62 +25,79 @@ export default function Home() {
       <HomeHero />
 
       <section className="new-method" id="approach" aria-labelledby="method-title">
-        <div className="new-method-orbit" aria-hidden="true"><span /><span /><span /></div>
+        <TechnicalSpline className="new-method-spline" variant="wide" />
         <div className="page-wrap new-method-inner">
-          <p className="new-index">01 / HOW I THINK</p>
+          <p className="new-index">01 / A LITTLE ABOUT ME</p>
           <h2 id="method-title">Make it.<br /><em>Then make it better.</em></h2>
           <div className="new-method-bottom">
-            <p>An idea gets interesting when dimensions, materials, and other people start asking questions back.</p>
-            <div className="new-method-steps" aria-label="My process"><span>Model</span><i aria-hidden="true">↗</i><span>Test</span><i aria-hidden="true">↗</i><span>Rethink</span></div>
+            <p>I study mechanical engineering at RWTH Aachen. I love the moment an idea leaves my head and meets dimensions, materials, and other people&apos;s questions.</p>
+            <Link href="/about" className="new-underlink">Get to know me <span aria-hidden="true">↗</span></Link>
           </div>
         </div>
       </section>
 
       <section className="new-work" id="selected-work" aria-labelledby="work-title">
         <div className="page-wrap new-section-head">
-          <div><p className="new-index">02 / ON THE CAD BENCH</p><h2 id="work-title">Made on <em>purpose.</em></h2></div>
-          <p>Objects, concepts, and the wrong turns that taught me something.</p>
+          <div><p className="new-index">02 / SELECTED WORK</p><h2 id="work-title">Ideas with <em>edges.</em></h2></div>
+          <p>A few things I&apos;ve modelled, questioned, and learned from.</p>
         </div>
         <ProjectRail projects={featured} />
-        <div className="page-wrap new-work-end"><Link href="/projects" className="new-underlink">See every project <span aria-hidden="true">↗</span></Link></div>
+        <div className="page-wrap new-work-end"><Link href="/projects" className="new-underlink">All projects and the stories behind them <span aria-hidden="true">↗</span></Link></div>
       </section>
 
       <section className="new-field" aria-labelledby="field-title">
         <div className="page-wrap new-field-layout">
           <div className="new-field-copy">
-            <p className="new-index">03 / OUT OF THE SCREEN</p>
-            <h2 id="field-title">The workshop<br /><em>has opinions.</em></h2>
-            <p>At Ecogenium, I am learning how chassis geometry, composites, and a team turn a neat model into a real decision.</p>
-            <Link href="/experience" className="new-underlink">Where I put it to work <span aria-hidden="true">↗</span></Link>
+            <p className="new-index">03 / IN PROGRESS</p>
+            <h2 id="field-title">On the <em>build sheet.</em></h2>
+            <p>Building a chassis in one team; looking inside components in another.</p>
           </div>
-          <figure className="new-field-photo">
-            <Image src="/images/experience/ecogenium-workshop.jpeg" alt="Composite material sample from Ecogenium's workshop" fill sizes="(max-width: 800px) 90vw, 48vw" className="object-cover" />
-            <figcaption>Field note / Ecogenium chassis team</figcaption>
-          </figure>
+          <div className="new-role-list">
+            <Link href="/experience#ecogenium" className="new-role">
+              <span className="new-role-meta">01 / CHASSIS DESIGN &amp; PRODUCTION</span>
+              <strong>Ecogenium</strong>
+              <span>Hydrogen vehicle · RWTH Aachen</span>
+              <p>Fabricating composite chassis components, preparing tooling, and solving production snags through testing.</p>
+              <span className="new-role-arrow" aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/experience#student-assistant" className="new-role">
+              <span className="new-role-meta">02 / STUDENT RESEARCH ASSISTANT</span>
+              <strong>WZL | IQS</strong>
+              <span>Industrial X-ray CT · RWTH Aachen</span>
+              <p>Helping prepare scans, reconstruct 3D volume data, and evaluate component quality without cutting the component open.</p>
+              <span className="new-role-arrow" aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
+        <TechnicalSpline className="new-field-spline" variant="short" />
       </section>
 
       <section className="new-research" aria-labelledby="research-title">
-        <div className="page-wrap new-research-layout">
-          <div className="new-research-copy">
-            <p className="new-index">04 / THE UNEXPECTED RESULT</p>
-            <h2 id="research-title">The data said <em>otherwise.</em></h2>
-            <p>I expected a wider launch-tube gap to shorten a projectile&apos;s range. Across the six gaps tested, the average went up. The no-gap control went farther still.</p>
-            <Link href="/research" className="new-underlink">Read the research <span aria-hidden="true">↗</span></Link>
-          </div>
-          <ProjectileEvidence />
+        <div className="page-wrap">
+          <p className="new-index">04 / RESEARCH</p>
+          <div className="new-research-head"><h2 id="research-title">Where the <em>why</em> went.</h2><p>Experiments and models that got more interesting when the first answer did not hold.</p></div>
+          <nav className="new-paper-line" aria-label="Research papers">
+            {research.map((paper, index) => <Link href="/research" className="new-paper" key={paper.title}>
+              <span className="new-paper-meta">{String(index + 1).padStart(2, "0")} / {paper.field}</span>
+              <strong>{paper.title}</strong>
+              <span className="new-paper-note">{paper.note}</span>
+              <span className="new-paper-arrow" aria-hidden="true">↗</span>
+            </Link>)}
+          </nav>
+          <Link href="/research" className="new-underlink new-research-link">Read the papers <span aria-hidden="true">↗</span></Link>
         </div>
       </section>
 
       <section className="new-writing" aria-labelledby="writing-title">
         <div className="page-wrap new-writing-layout">
-          <div><p className="new-index">05 / NOTES FROM THE WORKSHOP</p><h2 id="writing-title">Still figuring<br /><em>it out.</em></h2><p>Short dispatches from the parts of engineering I am learning in public.</p><Link href="/writing" className="new-underlink">My writing <span aria-hidden="true">↗</span></Link></div>
-          <a className="new-writing-note" href="https://drishdedhia23.substack.com/p/entry-three-why-am-i-looking-for" target="_blank" rel="noopener noreferrer"><span className="new-index">THE LOGBOOK / ENTRY 03</span><strong>Why Am I Looking for <em>Shortcuts?</em></strong><span>On making a hotwire cutter instead of buying one, and the questions that followed.</span><span className="new-note-arrow" aria-hidden="true">↗</span></a>
+          <div><p className="new-index">05 / WRITING</p><h2 id="writing-title">And the thoughts <em>in between.</em></h2></div>
+          <div className="new-writing-door"><p className="new-writing-kicker">MY SUBSTACK</p><h3>The Logbook of a <em>Learning Engineer</em></h3><p>Notes from learning in public: new questions, small mistakes, and the occasional thing that finally clicks.</p><Link href="/writing" className="new-underlink">Open the logbook <span aria-hidden="true">↗</span></Link></div>
         </div>
       </section>
 
       <section className="new-explore" aria-labelledby="explore-title">
-        <div className="page-wrap"><p className="new-index">KEEP FOLLOWING THE THREAD</p><h2 id="explore-title">Beyond <em>CAD.</em></h2><nav aria-label="Explore more"><Link href="/competitions">Competitions <span aria-hidden="true">↗</span></Link><Link href="/about">The person behind the CAD <span aria-hidden="true">↗</span></Link><Link href="/recruiter">The quick version <span aria-hidden="true">↗</span></Link></nav></div>
+        <TechnicalSpline className="new-explore-spline" variant="short" />
+        <div className="page-wrap"><p className="new-index">IF YOU WANT TO GO FURTHER</p><h2 id="explore-title">There&apos;s more to <em>the story.</em></h2><nav aria-label="Explore more"><Link href="/about">About me <span aria-hidden="true">↗</span></Link><Link href="/experience">Experience <span aria-hidden="true">↗</span></Link><Link href="/competitions">Competitions <span aria-hidden="true">↗</span></Link><Link href="/recruiter">A quick view <span aria-hidden="true">↗</span></Link></nav></div>
       </section>
     </div>
   );

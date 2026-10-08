@@ -43,12 +43,11 @@ export default function ProjectRail({ projects }: { projects: ProjectMeta[] }) {
       <div className="new-project-rail" ref={rail} onScroll={syncActive} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); move(1); } else if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); } }} role="region" aria-label="Featured projects" tabIndex={0}>
         {projects.map((project, index) => (
           <Link key={project.slug} href={`/projects/${project.slug}`} className="new-project" aria-label={`Explore ${project.title}`}>
+            <div className="new-project-copy"><span className="new-project-number">0{index + 1} / {project.category?.[0] ?? "CAD"}</span><h3>{project.title}</h3><p>{captions[project.slug] ?? project.shortDescription}</p></div>
             <div className="new-project-art">
-              <span className="new-project-number">0{index + 1} / {project.category?.[0] ?? "CAD"}</span>
-              {project.coverImage && <div className="new-project-image"><Image src={project.coverImage} alt={project.coverAlt || project.title} fill sizes="(max-width: 700px) 80vw, 430px" className="object-contain" /></div>}
+              {project.coverImage && <div className="new-project-image"><Image src={project.coverImage} alt={project.coverAlt || project.title} fill sizes="180px" className="object-contain" /></div>}
               <span className="new-project-open" aria-hidden="true">↗</span>
             </div>
-            <div className="new-project-copy"><h3>{project.title}</h3><p>{captions[project.slug] ?? project.shortDescription}</p></div>
           </Link>
         ))}
       </div>

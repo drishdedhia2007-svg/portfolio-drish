@@ -63,7 +63,8 @@ Only `.md` files inside `content/projects/` are read as projects. Files directly
 
 | Content | File |
 | --- | --- |
-| Home introduction and route cards | `components/HomeHero.tsx`, `app/page.tsx` |
+| Home introduction, current roles, research teasers, and routes | `components/HomeHero.tsx`, `app/page.tsx` |
+| Home project rail order, captions, and motion | `app/page.tsx`, `components/ProjectRail.tsx` |
 | Writing introduction and published Substack entry links | `app/writing/page.tsx` |
 | Experience and scholarship entries | `app/experience/page.tsx` |
 | Research paper summaries and PDF links | `app/research/page.tsx`, PDFs in `public/papers/` |
@@ -71,7 +72,8 @@ Only `.md` files inside `content/projects/` are read as projects. Files directly
 | Education, languages, and early story | `app/about/page.tsx` |
 | Recruiter summary and featured project slugs | `app/recruiter/page.tsx` |
 | Shared navigation and contact footer | `components/Navbar.tsx`, `components/Footer.tsx` |
-| Colors, spacing, and typography | `app/globals.css` |
+| Current colors and fonts | `app/refinement.css`, `app/rework.css` |
+| Current homepage layout, spline motif, and responsive details | `app/blueprint.css`, `components/TechnicalSpline.tsx` |
 | LinkedIn and website sharing thumbnail | `scripts/generate-linkedin-thumbnail.mjs` generates the editorial engineering portfolio graphic in `public/brand/linkedin-portfolio-thumbnail.svg` and `.png` |
 
 The Projects list and Skills page read project Markdown automatically. Experience, research, competitions, and About entries currently live in the page files listed above; they do not have an admin dashboard. Keep claims precise: distinguish CAD studies from printed or tested objects, identify tutorial-guided work, and describe mistakes and what changed.

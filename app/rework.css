@@ -1,19 +1,19 @@
 /* A more tactile visual language: open compositions, shaped imagery, and light as a material. */
 :root, html[data-theme="dark"] {
-  --aura-rose: #e7a8ac;
-  --aura-violet: #9780b7;
-  --aura-amber: #d9a175;
-  --aura-surface: #201b28;
-  --aura-ink: #f7f1ed;
-  --aura-soft: #c9becb;
+  --aura-rose: #a6d9ef;
+  --aura-violet: #8caed5;
+  --aura-amber: #79bacd;
+  --aura-surface: #172a3e;
+  --aura-ink: #f0f7fa;
+  --aura-soft: #b5c9d8;
 }
 html[data-theme="light"] {
-  --aura-rose: #a5606e;
-  --aura-violet: #80618d;
-  --aura-amber: #a86f4d;
-  --aura-surface: #f7f0ee;
-  --aura-ink: #322a35;
-  --aura-soft: #685c69;
+  --aura-rose: #236f9d;
+  --aura-violet: #577fae;
+  --aura-amber: #3e91ad;
+  --aura-surface: #f2f8fa;
+  --aura-ink: #1a3044;
+  --aura-soft: #536f82;
 }
 body { font-family: var(--font-body); letter-spacing: -.012em; }
 .display, .narrative-title, main h1, main h2, main h3 { font-family: var(--font-display); }

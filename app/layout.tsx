@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./refinement.css";
 import "./rework.css";
+import "./blueprint.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
