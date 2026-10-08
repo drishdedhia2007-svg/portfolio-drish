@@ -11,10 +11,9 @@ const competitions = [
 
 export default function Competitions() {
   return <>
-    <header className="border-b border-[#40526b] bg-[#142235] py-20"><div className="page-wrap"><p className="eyebrow">Competitions / 04</p><h1 className="display mt-4 text-5xl font-extrabold sm:text-7xl">Testing ideas under pressure.</h1><p className="story-lead mt-6 max-w-3xl text-lg">Competitions gave me a deadline, a team to learn from, and a clear result to measure. The result matters; so does the change in how I approached the next problem.</p></div></header>
-    <section className="page-wrap story-section grid gap-6">
-      {competitions.map((item, i) => <article key={item.name} className="story-card p-7 sm:p-9"><p className="technical text-xs text-[#d8e7ff]">{String(i + 1).padStart(2, "0")} / {item.year} / {item.kind.toUpperCase()}</p><h2 className="display mt-3 text-2xl font-extrabold sm:text-3xl">{item.name}</h2><p className="mt-5 inline-block border-l-2 border-[#a6c8ff] pl-4 font-bold text-[#f3f5fa]">{item.outcome}</p><p className="story-lead mt-5 max-w-3xl">{item.story}</p></article>)}
-      <div className="rounded-xl border border-[#40526b] bg-[#142235] p-7 sm:p-9"><p className="eyebrow">Earlier school competitions</p><h2 className="display mt-3 text-3xl font-extrabold">A broader record of showing up.</h2><p className="story-lead mt-3 max-w-3xl">My earlier competitions mixed individual problem solving with team sport. Some ended in a medal, while others built the habit of preparing and competing together.</p><div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{[
+    <header className="page-header"><div className="page-wrap inner-header"><p className="eyebrow">Competitions / thinking under pressure</p><h1 className="display">Testing ideas under <em>pressure.</em></h1><p className="story-lead">Competitions gave me a deadline, a team to learn from, and a clear result to measure. The result matters; so does the change in how I approached the next problem.</p></div></header>
+    <section className="page-wrap competition-list">{competitions.map((item, i) => <article key={item.name} className="competition-row"><p className="technical">{String(i + 1).padStart(2, "0")} / {item.year} / {item.kind.toUpperCase()}</p><div><h2>{item.name}</h2><p className="competition-outcome">{item.outcome}</p><p className="competition-story">{item.story}</p></div></article>)}</section>
+    <section className="competition-earlier"><div className="page-wrap"><p className="eyebrow">Earlier school competitions</p><h2 className="narrative-title">A broader record of <em>showing up.</em></h2><p>My earlier competitions mixed individual problem solving with team sport. Some ended in a medal, while others built the habit of preparing and competing together.</p><div className="earlier-list">{[
         ["Asset Talent Search", "Bronze medal"],
         ["International Mathematics Olympiad", "Second runner-up"],
         ["National Science Olympiad", "Second runner-up"],
@@ -23,7 +22,6 @@ export default function Competitions() {
         ["Under-14 football tournament", "First runner-up"],
         ["GICLM interschool basketball", "First place under my captainship"],
         ["Christ Academy, AIKYUM & DSO basketball", "School team participation"]
-      ].map(([name, result]) => <div key={name} className="story-card p-5"><h3 className="font-extrabold">{name}</h3><p className="mt-2 text-sm text-[#c5d0e0]">{result}</p></div>)}</div></div>
-    </section>
+      ].map(([name, result]) => <div key={name}><h3>{name}</h3><span>{result}</span></div>)}</div></div></section>
   </>;
 }

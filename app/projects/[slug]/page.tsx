@@ -24,24 +24,24 @@ export default async function ProjectPage({ params }: PageProps<"/projects/[slug
 
   return (
     <>
-      <header className="border-b border-[#40526b] bg-[#142235]">
-        <div className="page-wrap py-10 sm:py-16">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-xs font-extrabold text-[#d8e7ff] hover:underline"><span aria-hidden="true">&larr;</span> All projects</Link>
-          <p className="eyebrow mt-12">Case study / {project.category?.join(" + ") || "Engineering"}</p>
-          <h1 className="display mt-4 max-w-4xl text-5xl font-extrabold leading-[1.05] sm:text-7xl">{project.title}</h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#c5d0e0]">{project.shortDescription}</p>
-          <div className="mt-10 flex flex-wrap gap-3 border-t border-[#40526b] pt-5 text-[11px] font-bold uppercase tracking-[.13em] text-[#c5d0e0]"><span className="pr-3 text-[#d8e7ff]">{project.status.replaceAll("-", " ")}</span>{project.startDate && <span className="border-l border-[#40526b] pl-3">{project.startDate}{project.endDate ? ` – ${project.endDate}` : ""}</span>}{project.skills?.map((skill) => <span key={skill} className="border-l border-[#40526b] pl-3">{skill}</span>)}</div>
+      <header className="case-header">
+        <div className="page-wrap case-header-inner">
+          <Link href="/projects" className="case-back">← All projects</Link>
+          <p className="eyebrow">Case study / {project.category?.join(" + ") || "Engineering"}</p>
+          <h1 className="display">{project.title}</h1>
+          <p className="case-deck">{project.shortDescription}</p>
+          <div className="case-meta"><span>{project.status.replaceAll("-", " ")}</span>{project.startDate && <span>{project.startDate}{project.endDate ? ` – ${project.endDate}` : ""}</span>}<span>{project.skills?.slice(0, 3).join(" / ")}</span></div>
         </div>
       </header>
 
-      {project.coverImage && <div className="page-wrap py-8 sm:py-12"><div className="paper-grid relative aspect-[16/8] overflow-hidden border border-[#40526b] bg-[#142235]"><Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill loading="eager" sizes="(max-width: 1180px) 100vw, 1180px" className="object-contain" /></div><p className="technical mt-3 text-[10px] uppercase text-[#b3c5dd]">{project.coverCaption || `Project render / ${project.title}`}</p></div>}
+      {project.coverImage && <figure className="page-wrap case-hero"><div className="case-hero-image"><Image src={project.coverImage} alt={project.coverAlt || `${project.title} project render`} fill priority sizes="(max-width: 1290px) 100vw, 1290px" className="object-contain" /></div><figcaption className="technical">{project.coverCaption || `Project render / ${project.title}`}</figcaption></figure>}
 
-      <div className="page-wrap grid gap-12 py-12 lg:grid-cols-[220px_minmax(0,720px)] lg:gap-20 lg:py-18">
-        <aside className="lg:sticky lg:top-28 lg:self-start"><p className="eyebrow">Project notes</p><p className="mt-4 text-sm leading-7 text-[#c5d0e0]">The full story behind the work, from the first problem to the last lesson.</p><Link href="/skills" className="mt-6 inline-block text-xs font-extrabold text-[#d8e7ff] hover:underline">See skills in context <span aria-hidden="true">&rarr;</span></Link></aside>
+      <div className="page-wrap case-body">
+        <aside className="case-aside"><p className="eyebrow">Inside the study</p><p>Context, process, result, and the part I would change next.</p><div className="case-tools"><span className="technical">TOOLS &amp; METHODS</span>{project.skills?.map(skill => <span key={skill}>{skill}</span>)}</div><Link href="/skills" className="text-link">Skills in context <span aria-hidden="true">↗</span></Link></aside>
         <article className="project-prose" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />
       </div>
 
-      <div className="page-wrap border-t border-[#40526b] py-10"><Link href="/projects" className="button-secondary">Back to all projects <span aria-hidden="true">&rarr;</span></Link></div>
+      <div className="page-wrap case-end"><Link href="/projects" className="text-link">← All project notes</Link></div>
     </>
   );
 }

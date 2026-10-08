@@ -1,27 +1,11 @@
 import Link from "next/link";
 
+const links = [
+  ["Experience", "/experience"], ["Projects", "/projects"], ["Research", "/research"],
+  ["Writing", "/writing"], ["Competitions", "/competitions"], ["About", "/about"],
+  ["Skills", "/skills"], ["For recruiters", "/recruiter"],
+];
+
 export default function Footer() {
-  return (
-    <footer className="border-t border-[#3b4d6a] bg-[#111c2b] py-12 text-[#f3f5fa]">
-      <div className="page-wrap grid gap-8 lg:grid-cols-[1.3fr_1fr]">
-        <div>
-          <p className="technical text-[11px] uppercase text-[#d8e7ff]">Let&apos;s build something thoughtful</p>
-          <p className="display mt-3 text-3xl font-extrabold">Have an idea worth exploring?</p>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-[#dfe6f0]">I welcome conversations about internships, engineering roles, and research collaborations. Tell me what you are working on.</p>
-          <div className="mt-5 flex flex-wrap gap-4 text-sm font-bold"><a href="mailto:drishdedhia2007@gmail.com" className="text-[#d8e7ff] hover:underline">drishdedhia2007@gmail.com &rarr;</a><a href="https://www.linkedin.com/in/drish-dedhia-2564122b1" target="_blank" rel="noopener noreferrer" className="text-[#d8e7ff] hover:underline">LinkedIn &rarr;</a></div>
-        </div>
-        <div className="grid grid-cols-2 gap-x-5 gap-y-3 text-sm font-bold text-[#dfe6f0] sm:grid-cols-3">
-          <Link href="/experience" className="hover:text-[#d8e7ff]">Experience</Link>
-          <Link href="/projects" className="hover:text-[#d8e7ff]">Projects</Link>
-          <Link href="/writing" className="hover:text-[#d8e7ff]">Writing</Link>
-          <Link href="/research" className="hover:text-[#d8e7ff]">Research</Link>
-          <Link href="/competitions" className="hover:text-[#d8e7ff]">Competitions</Link>
-          <Link href="/about" className="hover:text-[#d8e7ff]">More about me</Link>
-          <Link href="/skills" className="hover:text-[#d8e7ff]">Skills</Link>
-          <Link href="/recruiter" className="hover:text-[#d8e7ff]">For recruiters</Link>
-          <a href="https://drishdedhia23.substack.com/" target="_blank" rel="noopener noreferrer" className="hover:text-[#d8e7ff]">Substack <span className="sr-only">(opens in a new tab)</span></a>
-        </div>
-      </div>
-    </footer>
-  );
+  return <footer className="site-footer"><div className="page-wrap footer-layout"><div className="footer-invite"><p className="eyebrow">The next conversation</p><h2>Have a question, a role, or an idea worth <em>trying?</em></h2><p>I would love to hear about engineering opportunities, research collaborations, or what you are building. Tell me where you are starting from.</p><a href="mailto:drishdedhia2007@gmail.com" className="footer-email">drishdedhia2007@gmail.com <span aria-hidden="true">↗</span></a></div><div className="footer-aside"><p className="technical">DRISH DEDHIA / RWTH AACHEN</p><nav aria-label="Footer navigation">{links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav><div className="footer-social"><a href="https://www.linkedin.com/in/drish-dedhia-2564122b1" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://drishdedhia23.substack.com/" target="_blank" rel="noopener noreferrer">Substack ↗</a></div></div></div><div className="page-wrap footer-bottom"><span>© 2026 Drish Dedhia</span><span>Designed around the work, and the questions that follow it.</span></div></footer>;
 }

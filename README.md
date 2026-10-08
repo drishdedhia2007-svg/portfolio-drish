@@ -72,7 +72,7 @@ Only `.md` files inside `content/projects/` are read as projects. Files directly
 | Recruiter summary and featured project slugs | `app/recruiter/page.tsx` |
 | Shared navigation and contact footer | `components/Navbar.tsx`, `components/Footer.tsx` |
 | Colors, spacing, and typography | `app/globals.css` |
-| LinkedIn and website sharing thumbnail | `scripts/generate-linkedin-thumbnail.mjs` generates the editorial question graphic in `public/brand/linkedin-portfolio-thumbnail.svg` and `.png` |
+| LinkedIn and website sharing thumbnail | `scripts/generate-linkedin-thumbnail.mjs` generates the editorial engineering portfolio graphic in `public/brand/linkedin-portfolio-thumbnail.svg` and `.png` |
 
 The Projects list and Skills page read project Markdown automatically. Experience, research, competitions, and About entries currently live in the page files listed above; they do not have an admin dashboard. Keep claims precise: distinguish CAD studies from printed or tested objects, identify tutorial-guided work, and describe mistakes and what changed.
 

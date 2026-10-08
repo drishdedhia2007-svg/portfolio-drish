@@ -5,19 +5,19 @@ export default function HomeHero() {
   return <section className="home-hero" aria-labelledby="home-title">
     <div className="page-wrap hero-layout">
       <div className="hero-copy">
-        <p className="eyebrow">Drish Dedhia / Mechanical Engineering / RWTH Aachen</p>
-        <h1 id="home-title" className="hero-title">I want to know <em>how it works.</em><br />Then make it <em>better.</em></h1>
-        <p className="hero-intro">I started by pulling apart toy cars and old appliances to see what was going on inside. Now I bring that same curiosity to CAD, research, and Ecogenium&apos;s chassis workshop. There is a lot I do not know yet, which means there is a lot I cannot wait to figure out.</p>
-        <div className="hero-actions"><Link href="/projects" className="button-primary">Explore the work <span aria-hidden="true">↗</span></Link><Link href="/about" className="button-light">Meet Drish <span aria-hidden="true">↗</span></Link></div>
-        <div className="hero-index" aria-label="Portfolio at a glance"><span><strong>01</strong> Mechanical engineering student</span><span><strong>02</strong> CAD and hands-on projects</span><span><strong>03</strong> Learning out loud</span></div>
+        <p className="eyebrow hero-kicker">Drish Dedhia <span aria-hidden="true">/</span> Maschinenbau at RWTH Aachen</p>
+        <h1 id="home-title" className="hero-title">I want to know <em>how it works.</em></h1>
+        <p className="hero-intro">I am a mechanical engineering student who likes taking a question into CAD, the workshop, or an experiment and finding out where the first answer falls short.</p>
+        <p className="hero-aside">I started by pulling apart toy cars. These days I am learning from a hydrogen vehicle team, designing small things of my own, and writing down the parts I get wrong along the way.</p>
+        <div className="hero-actions"><a href="#approach" className="button-primary">Explore the story <span aria-hidden="true">↘</span></a><Link href="/recruiter" className="text-link">A quick view for recruiters <span aria-hidden="true">↗</span></Link></div>
       </div>
-      <div className="hero-visual" aria-label="Portrait and engineering work">
-        <div className="hero-visual-grid" aria-hidden="true" />
-        <figure className="hero-portrait"><Image src="/images/about/drish-formal.jpg" alt="Drish Dedhia smiling in a blazer" fill priority sizes="(max-width: 900px) 70vw, 380px" className="object-cover" /></figure>
-        <figure className="hero-model"><Image src="/images/projects/self-locking-hook/studio-visualization.png" alt="CAD visualization of Drish's self-locking towel hook" fill sizes="(max-width: 900px) 48vw, 260px" className="object-contain" /><figcaption>CAD study / 002</figcaption></figure>
-        <div className="hero-orbit" aria-hidden="true"><span>?</span></div><span className="hero-visual-note">Sketch → model → question → repeat</span>
-      </div>
+      <figure className="hero-portrait-composition">
+        <div className="portrait-coordinate portrait-coordinate-top" aria-hidden="true"><span>DD—01</span><span>50° 46&apos; N / 6° 04&apos; E</span></div>
+        <div className="hero-portrait-frame"><Image src="/images/about/drish-formal.jpg" alt="Drish Dedhia smiling and facing the camera in a blazer" fill priority sizes="(max-width: 800px) 85vw, 440px" className="object-cover" /></div>
+        <figcaption className="portrait-caption"><span>DRISH / 2026</span><span>Looking closely. Building carefully. Learning openly.</span></figcaption>
+        <div className="portrait-measure" aria-hidden="true" />
+      </figure>
     </div>
-    <div className="hero-bottom page-wrap"><span>Curiosity has a workshop address now.</span><a href="#start" aria-label="Scroll to the introduction">Scroll to explore ↓</a></div>
+    <div className="hero-bottom page-wrap"><span>Mechanical design <i>·</i> experiments <i>·</i> the learning in between</span><a href="#approach">Scroll to begin <span aria-hidden="true">↓</span></a></div>
   </section>;
 }

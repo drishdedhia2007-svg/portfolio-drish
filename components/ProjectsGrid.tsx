@@ -4,28 +4,25 @@ import { useState } from "react";
 import ProjectCard from "@/components/ProjectCard";
 import type { ProjectMeta } from "@/lib/projects";
 
-export default function ProjectsGrid({ projects }: { projects: ProjectMeta[] }) {
-  const [statusFilter, setStatusFilter] = useState("all");
-  const statuses = ["all", ...Array.from(new Set(projects.map((project) => project.status)))];
-  const filtered = statusFilter === "all" ? projects : projects.filter((project) => project.status === statusFilter);
+const filters = [
+  { key: "all", label: "All work" },
+  { key: "independent", label: "Independent builds" },
+  { key: "team", label: "Team concept" },
+  { key: "guided", label: "Guided exercise" },
+] as const;
+type Filter = typeof filters[number]["key"];
 
-  return (
-    <div>
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-y border-[#40526b] py-4">
-        <div className="flex flex-wrap gap-2" aria-label="Filter projects by status">
-          {statuses.map((status) => (
-            <button key={status} type="button" onClick={() => setStatusFilter(status)} aria-pressed={statusFilter === status} className={`rounded-sm px-4 py-2 text-xs font-extrabold capitalize transition-colors ${statusFilter === status ? "bg-[#121f30] text-white" : "bg-[#142235] text-[#c5d0e0] hover:bg-[#304a66]"}`}>
-              {status === "all" ? "All work" : status.replaceAll("-", " ")}
-            </button>
-          ))}
-        </div>
-        <span className="technical text-[10px] uppercase text-[#b3c5dd]">Showing {filtered.length} of {projects.length}</span>
-      </div>
-      {filtered.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{filtered.map((project) => <ProjectCard key={project.slug} project={project} index={projects.findIndex((item) => item.slug === project.slug) + 1} />)}</div>
-      ) : (
-        <div className="border border-[#40526b] bg-[#1b2b40] p-10 text-center text-[#c5d0e0]">No projects match this filter yet.</div>
-      )}
-    </div>
-  );
+function group(project: ProjectMeta): Exclude<Filter, "all"> {
+  if (project.category?.includes("Internship")) return "team";
+  if (project.category?.includes("Guided Exercise")) return "guided";
+  return "independent";
+}
+
+export default function ProjectsGrid({ projects }: { projects: ProjectMeta[] }) {
+  const [filter, setFilter] = useState<Filter>("all");
+  const filtered = filter === "all" ? projects : projects.filter(project => group(project) === filter);
+
+  return <div><div className="project-filters"><div role="group" aria-label="Filter projects by type">{filters.map(item => <button key={item.key} type="button" onClick={() => setFilter(item.key)} aria-pressed={filter === item.key}>{item.label}</button>)}</div><span className="technical">{String(filtered.length).padStart(2, "0")} / {String(projects.length).padStart(2, "0")} STUDIES</span></div>
+    {filtered.length ? <div className="project-collection">{filtered.map((project, index) => <ProjectCard key={project.slug} project={project} index={projects.findIndex(item => item.slug === project.slug) + 1} variant={index === 0 ? "feature" : index === filtered.length - 1 && filtered.length > 2 ? "wide" : "standard"} />)}</div> : <p className="project-empty">No projects in this group yet.</p>}
+  </div>;
 }

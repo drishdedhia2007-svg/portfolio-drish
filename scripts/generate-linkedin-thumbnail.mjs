@@ -4,43 +4,39 @@ import sharp from "sharp";
 
 const outputDir = path.join(process.cwd(), "public/brand");
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
-  <title id="title">Drish Dedhia mechanical engineering portfolio</title>
-  <desc id="desc">An editorial poster reading “I want to know how it works.”, with abstract construction lines and Drish Dedhia's name in a small byline.</desc>
+  <title id="title">Drish Dedhia — Engineering Portfolio</title>
+  <desc id="desc">A warm editorial engineering portfolio graphic with Drish Dedhia's name, Mechanical Engineering at RWTH Aachen, and abstract technical construction lines.</desc>
   <defs>
-    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17283d"/><stop offset="1" stop-color="#0b1422"/></linearGradient>
-    <radialGradient id="glow"><stop stop-color="#638bc7" stop-opacity=".23"/><stop offset="1" stop-color="#638bc7" stop-opacity="0"/></radialGradient>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#7f97b8" stroke-opacity=".11" stroke-width="1"/></pattern>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#91a7a4" stroke-opacity=".14" stroke-width="1"/></pattern>
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2e4143"/><stop offset="1" stop-color="#18272b"/></linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#background)"/>
-  <rect width="1200" height="630" fill="url(#grid)"/>
-  <ellipse cx="991" cy="291" rx="340" ry="350" fill="url(#glow)"/>
-  <path d="M64 66H1136M64 565H1136" fill="none" stroke="#6f8eae" stroke-width="1.5"/>
-  <path d="M64 66H228M986 565H1136" fill="none" stroke="#a6c8ff" stroke-width="4"/>
-  <g font-family="Segoe UI,Arial,sans-serif">
-    <text x="66" y="108" fill="#a6c8ff" font-size="18" font-weight="700" letter-spacing="3.2">A MECHANICAL ENGINEERING PORTFOLIO</text>
-    <text x="61" y="241" fill="#f3f5fa" font-size="78" font-weight="700" letter-spacing="-3.5">I want to know</text>
-    <text x="62" y="333" fill="#f3f5fa" font-size="78" font-weight="700" letter-spacing="-3.5">how it</text>
-    <text x="62" y="441" fill="#a6c8ff" font-family="Georgia,Times New Roman,serif" font-style="italic" font-size="116" letter-spacing="-5">works.</text>
-    <text x="66" y="510" fill="#cad7e8" font-size="24" font-weight="500">The ideas, the wrong turns, and what I learned.</text>
-    <text x="66" y="602" fill="#d7e4f5" font-size="18" font-weight="600" letter-spacing=".5">Drish Dedhia  ·  RWTH Aachen</text>
-    <text x="953" y="602" fill="#a6c8ff" font-size="15" font-weight="700" letter-spacing="2.1">EXPLORE THE WORK ↗</text>
+  <rect width="1200" height="630" fill="#152126"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#d5a084"/>
+  <path d="M68 75H718M68 542H1132" stroke="#829694" stroke-width="1"/>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <text x="68" y="128" fill="#f5f0e8" font-size="32" font-weight="600" letter-spacing=".4">Drish Dedhia</text>
+    <text x="68" y="174" fill="#aac5c7" font-size="17" font-weight="600" letter-spacing="2.8">MECHANICAL ENGINEERING  /  RWTH AACHEN</text>
+    <text x="62" y="301" fill="#f5f0e8" font-size="80" font-weight="500" letter-spacing="-4">Engineering</text>
+    <text x="64" y="415" fill="#d5a084" font-family="Georgia,Times New Roman,serif" font-size="119" font-style="italic" letter-spacing="-7">portfolio.</text>
+    <text x="68" y="485" fill="#bdc8c5" font-size="23" font-weight="400">Ideas. Models. Mistakes. Better questions.</text>
+    <text x="68" y="584" fill="#aac5c7" font-size="16" font-weight="600" letter-spacing="2.4">CAD   /   CHASSIS   /   RESEARCH   /   WRITING</text>
   </g>
-  <g fill="none" stroke="#82a6d4" stroke-width="2">
-    <circle cx="971" cy="300" r="177" stroke-opacity=".55"/>
-    <circle cx="971" cy="300" r="128" stroke-dasharray="5 12" stroke-opacity=".75"/>
-    <circle cx="971" cy="300" r="62" stroke-opacity=".8"/>
-    <path d="M971 82V518M753 300H1189" stroke-opacity=".35"/>
-    <path d="M844 173L1098 427M1098 173L844 427" stroke-opacity=".25"/>
-    <path d="M971 123A177 177 0 0 1 1138 241" stroke="#d8e7ff" stroke-width="6" stroke-linecap="round"/>
-    <path d="M844 427A177 177 0 0 1 804 227" stroke="#a6c8ff" stroke-width="6" stroke-linecap="round"/>
-  </g>
-  <circle cx="971" cy="300" r="9" fill="#a6c8ff"/>
-  <circle cx="1138" cy="241" r="6" fill="#d8e7ff"/>
-  <circle cx="844" cy="427" r="6" fill="#a6c8ff"/>
-  <g fill="#c5d0e0" font-family="Segoe UI,Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2.2">
-    <text x="812" y="102">ASK / 01</text>
-    <text x="1016" y="487">BUILD / 02</text>
-    <text x="794" y="510">RETHINK / 03</text>
+  <g>
+    <rect x="765" y="75" width="367" height="435" fill="url(#plate)" stroke="#748e8f" stroke-width="1.5"/>
+    <rect x="765" y="75" width="367" height="435" fill="url(#grid)"/>
+    <path d="M795 108H1102M795 478H1102" fill="none" stroke="#9db1ad" stroke-opacity=".55"/>
+    <g fill="#aac5c7" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="600" letter-spacing="1.8"><text x="796" y="101">STUDY / 001</text><text x="995" y="498">SECTION / A—A</text></g>
+    <g fill="none" stroke="#aac5c7" stroke-width="1.5">
+      <ellipse cx="949" cy="294" rx="123" ry="90" transform="rotate(-24 949 294)"/>
+      <ellipse cx="949" cy="294" rx="82" ry="50" transform="rotate(-24 949 294)" stroke-dasharray="4 7"/>
+      <path d="M830 339L1040 249M821 281L1075 281M949 164V420" stroke-opacity=".45"/>
+      <path d="M852 369C885 431 990 433 1043 362" stroke="#d5a084" stroke-width="5" stroke-linecap="round"/>
+      <path d="M851 218C908 168 1012 177 1050 226" stroke="#f0ebe2" stroke-width="4" stroke-linecap="round"/>
+      <path d="M817 432H1081M817 424V440M1081 424V440" stroke="#d5a084"/>
+      <path d="M1085 182V409M1077 182H1093M1077 409H1093" stroke="#d5a084"/>
+    </g>
+    <circle cx="949" cy="294" r="6" fill="#d5a084"/>
+    <g fill="#d5a084" font-family="Arial,Helvetica,sans-serif" font-size="11" letter-spacing="1.4"><text x="895" y="452">MODEL / REVISE</text><text x="1098" y="304" transform="rotate(90 1098 304)">MEASURE</text></g>
   </g>
 </svg>`;
 
