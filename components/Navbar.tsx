@@ -19,7 +19,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   return <header className="site-header">
     <nav className="page-wrap site-nav" aria-label="Main navigation">
-      <Link href="/" className="site-brand" onClick={() => setOpen(false)} aria-label="Drish Dedhia, home"><strong><em>Drish Dedhia</em></strong></Link>
+      <Link href="/" className="site-brand" onClick={() => setOpen(false)} aria-label="Drish Dedhia, home"><strong>Drish Dedhia</strong></Link>
       <button className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-links" onClick={() => setOpen(value => !value)}>{open ? "Close" : "Menu"}<span aria-hidden="true">{open ? "×" : "+"}</span></button>
       <div id="site-links" className={`site-links ${open ? "is-open" : ""}`}>{links.map(link => <Link key={link.href} href={link.href} className={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "is-active" : ""} aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined} onClick={() => setOpen(false)}>{link.label}</Link>)}<Link className="recruiter-link" href="/recruiter" onClick={() => setOpen(false)}>Quick view ↗</Link></div>
       <ThemeToggle />

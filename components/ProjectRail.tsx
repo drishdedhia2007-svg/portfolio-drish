@@ -41,7 +41,15 @@ export default function ProjectRail({ projects }: { projects: ProjectMeta[] }) {
       </div>
       <div className="new-project-rail" ref={rail} onScroll={syncActive} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); move(1); } else if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); } }} role="region" aria-label="Featured projects" tabIndex={0}>
         {projects.map((project, index) => (
-          <Link key={project.slug} href={`/projects/${project.slug}`} className="new-project" aria-label={`Explore ${project.title}`}>
+          <Link key={project.slug} href={`/projects/${project.slug}`} className="new-project" aria-label={`Explore ${project.title}`} onPointerMove={(event) => {
+            if (event.pointerType !== "mouse" || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+            const bounds = event.currentTarget.getBoundingClientRect();
+            event.currentTarget.style.setProperty("--light-x", `${event.clientX - bounds.left + 36}px`);
+            event.currentTarget.style.setProperty("--light-y", `${event.clientY - bounds.top + 36}px`);
+          }} onPointerLeave={(event) => {
+            event.currentTarget.style.removeProperty("--light-x");
+            event.currentTarget.style.removeProperty("--light-y");
+          }}>
             <div className="new-project-copy"><span className="new-project-number">0{index + 1} / {project.category?.[0] ?? "CAD"}</span><h3>{project.title}</h3><p>{captions[project.slug] ?? project.shortDescription}</p></div>
             <div className="new-project-art">
               {project.coverImage && <div className="new-project-image"><Image src={project.coverImage} alt={project.coverAlt || project.title} fill sizes="180px" className="object-contain" /></div>}
